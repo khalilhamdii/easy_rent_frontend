@@ -1,0 +1,37 @@
+.home {
+  text-align: center;
+  position: relative;
+}
+
+.show-icon {
+  position: absolute;
+  margin-top: 10px;
+  margin-left: 10px;
+  color: #97bf0f;
+  font-size: 25px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.left-arrow {
+  font-size: 20px;
+  padding: 12px;
+  background: #dee2e6;
+  color: white;
+  padding-left: 15px;
+  padding-right: 30px;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+
+.right-arrow {
+  font-size: 20px;
+  padding: 12px;
+  background: #97bf0f;
+  color: white;
+  padding-left: 30px;
+  padding-right: 15px;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+}
