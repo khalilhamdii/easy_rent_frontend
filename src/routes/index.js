@@ -5,6 +5,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 // import { connect } from 'react-redux';
 import Home from '../components/Home';
 import SideBar from '../components/SideBar';
+import Login from '../components/login';
 
 const Routes = () => {
   return (
@@ -13,6 +14,7 @@ const Routes = () => {
         <SideBar />
         <Switch>
           <Route path="/" exact component={Home} />
+          <Route path="/login" exact component={Login} />
         </Switch>
       </div>
     </BrowserRouter>
