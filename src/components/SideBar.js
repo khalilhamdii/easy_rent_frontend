@@ -1,60 +1,62 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../assets/css/sidebar.css';
 
 const SideBar = () => {
-  const [barState, setBarState] = useState('');
-  const handleShowBar = () => {
-    setBarState('active');
-  };
-  const handleHideBar = () => {
-    setBarState('');
-  };
   return (
-    <>
-      <a
-        className="btn btn-primary btn-customized open-menu"
-        onClick={handleShowBar}
-        role="button"
-      >
-        <i className="fas fa-align-left"></i>
+    <nav className="col-2 sidebar">
+      <a href="/">
+        <i className="fa fa-bars show-icon"></i>
       </a>
-      <nav className={`sidebar light ${barState}`}>
-        <a role="button" onClick={handleHideBar}>
-          <div className="dismiss">
-            <i className="fas fa-arrow-left"></i>
-          </div>
+      <div className="mb-5 logo">
+        <span>EasyRent</span>
+      </div>
+      <ul className="list-unstyled">
+        <li>
+          <a href="/">HOME</a>
+        </li>
+        <li>
+          <a href="/">CARS</a>
+        </li>
+        <li>
+          <a href="/">RENT LIST</a>
+        </li>
+        <li>
+          <a href="/">CONTACT US</a>
+        </li>
+      </ul>
+      <div className="d-flex flex-column align-items-center mt-5">
+        <button
+          className="btn btn-primary rounded-pill w-75 mb-2 signup-btn"
+          type="button"
+        >
+          SIGN UP
+        </button>
+        <span style={{ fontSize: '13px' }}>Already member ?&nbsp;</span>
+        <a href="/" style={{ color: '#97BF0F' }}>
+          Login
         </a>
-        <div className="logo">EasyRent</div>
-
-        <ul className="list-unstyled menu-elements">
-          <li className="active">
-            <a className="scroll-link" href="#top-content">
-              <i className="fas fa-home"></i> Home
-            </a>
-          </li>
-          <li>
-            <a className="scroll-link" href="#section-1">
-              <i className="fas fa-cog"></i> What we do
-            </a>
-          </li>
-          <li>
-            <a className="scroll-link" href="#section-2">
-              <i className="fas fa-user"></i> About us
-            </a>
-          </li>
-          <li>
-            <a className="scroll-link" href="#section-5">
-              <i className="fas fa-pencil-alt"></i> Portfolio
-            </a>
-          </li>
-          <li>
-            <a className="scroll-link" href="#section-6">
-              <i className="fas fa-envelope"></i> Contact us
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </>
+      </div>
+      <div className="w-100 mb-3 nav-bottom">
+        <div
+          className="social-icons mb-1"
+          style={{ paddingTop: '0px', paddingBottom: '0px' }}
+        >
+          <a href="/">
+            <i className="icon ion-social-twitter"></i>
+          </a>
+          <a href="/">
+            <i className="icon ion-social-facebook"></i>
+          </a>
+          <a href="/">
+            <i className="icon ion-social-snapchat"></i>
+          </a>
+          <a href="/">
+            <i className="icon ion-social-youtube"></i>
+          </a>
+        </div>
+        <span style={{ fontSize: '12px' }}>2021 Khalil Hamdi</span>
+      </div>
+    </nav>
   );
 };
 
