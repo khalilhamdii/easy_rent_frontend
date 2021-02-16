@@ -2,7 +2,7 @@ import React from 'react';
 
 const User = () => {
   return (
-    <div className="container d-flex flex-column mt-5 vh-100">
+    <div className="container d-flex flex-column mt-5 ">
       <h4>My rented cars</h4>
       <div className="table-responsive mt-5" style={{ textAlign: 'center' }}>
         <table className="table">

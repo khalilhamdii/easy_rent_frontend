@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import '../assets/css/sidebar.css';
 
 const SideBar = () => {
@@ -21,29 +22,30 @@ const SideBar = () => {
         </div>
         <ul className="list-unstyled">
           <li>
-            <a href="/">HOME</a>
+            <Link to="/">HOME</Link>
           </li>
           <li>
-            <a href="/">CARS</a>
+            <Link to="/car">CAR</Link>
           </li>
           <li>
-            <a href="/">RENT LIST</a>
+            <Link to="/user">PROFIL</Link>
           </li>
           <li>
-            <a href="/">CONTACT US</a>
+            <Link to="/panel">PANEL</Link>
           </li>
         </ul>
         <div className="d-flex flex-column align-items-center mt-5">
-          <button
+          <Link
+            to="/signup"
             className="btn rounded-pill btn-customized w-75 mb-2"
-            type="button"
           >
             SIGN UP
-          </button>
+          </Link>
+
           <span style={{ fontSize: '13px' }}>Already member ?&nbsp;</span>
-          <a href="/" style={{ color: '#97BF0F' }}>
+          <Link to="/login" style={{ color: '#97BF0F' }}>
             Login
-          </a>
+          </Link>
         </div>
         <div className="w-100 mb-3 nav-bottom">
           <div

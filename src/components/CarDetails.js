@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import RentForm from './RentForm';
 import '../assets/css/cardetails.css';
 import carImg from '../assets/images/download.jpeg';
+import { Link } from 'react-router-dom';
 
 const CarDetails = () => {
   const [formStatus, setFormStatus] = useState(false);
@@ -11,20 +12,20 @@ const CarDetails = () => {
   };
   return (
     <>
-      <div className="d-flex flex-column justify-content-center pr-2 vh-100">
-        <div className="d-flex justify-content-around mt-5 py-4 px-2">
+      <div className="d-flex flex-column justify-content-center pr-5 vh-100 w-100">
+        <h5 style={{ textAlign: 'right' }}>
+          Kia Rio 2017
+          <br />
+        </h5>
+        <h6 className="text-muted" style={{ textAlign: 'right' }}>
+          15$/Day
+          <br />
+        </h6>
+        <div className="d-flex justify-content-between mt-2 ">
           <div className="d-flex align-items-center col-7">
-            <img className="w-100" src={carImg} />
+            <img className="w-100" src={carImg} style={{ maxWidth: '40vw' }} />
           </div>
           <div className="col-4" style={{ padding: 0 }}>
-            <h5 style={{ textAlign: 'right' }}>
-              Kia Rio 2017
-              <br />
-            </h5>
-            <h6 className="text-muted mb-5" style={{ textAlign: 'right' }}>
-              15$/Day
-              <br />
-            </h6>
             <div
               className="text-center p-2"
               style={{ background: 'var(--light)', borderRadius: 15 }}
@@ -92,7 +93,9 @@ const CarDetails = () => {
           </div>
         </div>
         <div className="w-100" style={{ textAlign: 'left' }}>
-          <i className="fa fa-caret-left return-btn" />
+          <Link to="/">
+            <i className="fa fa-caret-left return-btn" />
+          </Link>
         </div>
       </div>
       <RentForm formStatus={formStatus} handleRentClick={handleRentClick} />
