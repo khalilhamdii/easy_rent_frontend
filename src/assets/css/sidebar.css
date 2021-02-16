@@ -44,12 +44,6 @@ ul li a:focus {
   background-color: #97bf0f;
 }
 
-.signup-btn {
-  background: #97bf0f;
-  border-style: none;
-  font-size: 15px;
-}
-
 .nav-bottom {
   position: absolute;
   bottom: 0;

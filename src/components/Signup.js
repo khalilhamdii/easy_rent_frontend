@@ -38,11 +38,7 @@ const Signup = () => {
           />
         </div>
         <div className="form-group">
-          <button
-            className="btn btn-primary btn-block"
-            type="submit"
-            style={{ background: '#97BF0F' }}
-          >
+          <button className="btn btn-customized btn-block" type="submit">
             Sign Up
           </button>
         </div>

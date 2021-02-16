@@ -82,9 +82,8 @@ const CarDetails = () => {
               </div>
               <button
                 onClick={handleRentClick}
-                className="btn btn-primary w-75 mb-2"
+                className="btn w-75 mb-2 btn-customized"
                 type="button"
-                style={{ background: '#97BF0F', borderStyle: 'none' }}
               >
                 Rent car
                 <i className="fa fa-arrow-right ml-2" />

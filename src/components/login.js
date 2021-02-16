@@ -30,11 +30,7 @@ const login = () => {
           />
         </div>
         <div className="form-group">
-          <button
-            className="btn btn-primary btn-block"
-            type="submit"
-            style={{ background: '#97BF0F' }}
-          >
+          <button className="btn btn-block btn-customized" type="submit">
             Log In
           </button>
         </div>

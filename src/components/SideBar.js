@@ -35,7 +35,7 @@ const SideBar = () => {
         </ul>
         <div className="d-flex flex-column align-items-center mt-5">
           <button
-            className="btn btn-primary rounded-pill w-75 mb-2 signup-btn"
+            className="btn rounded-pill btn-customized w-75 mb-2"
             type="button"
           >
             SIGN UP
