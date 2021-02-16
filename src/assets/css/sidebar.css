@@ -1,9 +1,9 @@
 .sidebar {
   box-shadow: 1px 0px 1px #dfe8ee;
   height: 100vh;
-  position: relative;
   padding: 0px;
   padding-bottom: 0px;
+  transition: all 0.3s;
 }
 
 .show-icon {
@@ -12,6 +12,7 @@
   left: 10px;
   color: #97bf0f;
   font-size: 25px;
+  z-index: 999;
 }
 
 .logo {
@@ -30,14 +31,17 @@ ul {
   border-bottom: 1px solid #dfe8ee;
 }
 
-ul li {
-  padding-left: 20px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+ul li a {
+  display: block;
+  padding: 10px 20px;
+  border: 0;
+  color: var(--dark);
 }
 
-ul li a {
-  color: var(--dark);
+ul li a:hover,
+ul li a:focus {
+  color: white;
+  background-color: #97bf0f;
 }
 
 .signup-btn {

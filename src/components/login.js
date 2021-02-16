@@ -2,7 +2,7 @@ import React from 'react';
 
 const login = () => {
   return (
-    <div className="login-clean w-100">
+    <div className="login-clean w-100 vh-100">
       <form>
         <div className="illustration" style={{ padding: '0px' }}>
           <i

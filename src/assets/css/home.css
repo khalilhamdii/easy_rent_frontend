@@ -3,17 +3,6 @@
   position: relative;
 }
 
-.show-icon {
-  position: absolute;
-  margin-top: 10px;
-  margin-left: 10px;
-  color: #97bf0f;
-  font-size: 25px;
-  position: absolute;
-  top: 10px;
-  left: 10px;
-}
-
 .left-arrow {
   font-size: 20px;
   padding: 12px;

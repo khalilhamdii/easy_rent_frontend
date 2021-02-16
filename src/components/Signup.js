@@ -2,7 +2,7 @@ import React from 'react';
 
 const Signup = () => {
   return (
-    <div className="login-clean w-100">
+    <div className="login-clean w-100 vh-100">
       <form method="post">
         <div className="illustration" style={{ padding: 0 }}>
           <i

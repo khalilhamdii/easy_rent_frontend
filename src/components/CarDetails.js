@@ -11,7 +11,7 @@ const CarDetails = () => {
   };
   return (
     <>
-      <div className="d-flex flex-column justify-content-center pr-2">
+      <div className="d-flex flex-column justify-content-center pr-2 vh-100">
         <div className="d-flex justify-content-around mt-5 py-4 px-2">
           <div className="d-flex align-items-center col-7">
             <img className="w-100" src={carImg} />

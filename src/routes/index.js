@@ -14,7 +14,12 @@ import Panel from '../components/Panel';
 const Routes = () => {
   return (
     <BrowserRouter>
-      <div className="d-flex">
+      <div
+        className="d-flex"
+        style={{
+          position: 'relative',
+        }}
+      >
         <SideBar />
         <Switch>
           <Route path="/" exact component={Home} />
