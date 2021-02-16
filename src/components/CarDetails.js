@@ -37,8 +37,8 @@ const CarDetails = () => {
                   </thead>
                   <tbody>
                     <tr>
-                      <td>CONDITION</td>
-                      <td>Used</td>
+                      <td>COLOR</td>
+                      <td>White</td>
                     </tr>
                     <tr>
                       <td>BODY STYLE</td>

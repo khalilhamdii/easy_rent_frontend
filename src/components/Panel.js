@@ -1,6 +1,8 @@
 import React from 'react';
-
-const Panel = () => {
+import { connect } from 'react-redux';
+import { mapRentsToProps } from '../helpers/index';
+const Panel = (props) => {
+  const { rents } = props;
   return (
     <div className="container d-flex flex-column mt-5">
       <h4>Admin panel</h4>
@@ -17,78 +19,26 @@ const Panel = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Cell 1</td>
-              <td>Cell 2</td>
-              <td>Cell 2</td>
-              <td>Cell 2</td>
-              <td>Cell 2</td>
-              <td>Cell 2</td>
-              <td>
-                <div className="text-center">
-                  <a href="#" style={{ color: '#97BF0F' }}>
-                    <i className="fa fa-check mr-2" />
-                  </a>
-                  <a href="#" style={{ color: '#97BF0F' }}>
-                    <i className="fa fa-remove mr-2" />
-                  </a>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>Cell 1</td>
-              <td>Cell 2</td>
-              <td>Cell 2</td>
-              <td>Cell 2</td>
-              <td>Cell 2</td>
-              <td>Cell 2</td>
-              <td>
-                <div className="text-center">
-                  <a href="#" style={{ color: '#97BF0F' }}>
-                    <i className="fa fa-check mr-2" />
-                  </a>
-                  <a href="#" style={{ color: '#97BF0F' }}>
-                    <i className="fa fa-remove mr-2" />
-                  </a>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>Cell 1</td>
-              <td>Cell 2</td>
-              <td>Cell 2</td>
-              <td>Cell 2</td>
-              <td>Cell 2</td>
-              <td>Cell 2</td>
-              <td>
-                <div className="text-center">
-                  <a href="#" style={{ color: '#97BF0F' }}>
-                    <i className="fa fa-check mr-2" />
-                  </a>
-                  <a href="#" style={{ color: '#97BF0F' }}>
-                    <i className="fa fa-remove mr-2" />
-                  </a>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>Cell 1</td>
-              <td>Cell 2</td>
-              <td>Cell 2</td>
-              <td>Cell 2</td>
-              <td>Cell 2</td>
-              <td>Cell 2</td>
-              <td>
-                <div className="text-center">
-                  <a href="#" style={{ color: '#97BF0F' }}>
-                    <i className="fa fa-check mr-2" />
-                  </a>
-                  <a href="#" style={{ color: '#97BF0F' }}>
-                    <i className="fa fa-remove mr-2" />
-                  </a>
-                </div>
-              </td>
-            </tr>
+            {rents.map((rent) => (
+              <tr>
+                <td>{rent.status ? 'Rented' : 'Pending'}</td>
+                <td>{rent.user_name}</td>
+                <td>{rent.model}</td>
+                <td>{rent.pickUp_date}</td>
+                <td>{rent.return_date}</td>
+                <td>{rent.location}</td>
+                <td>
+                  <div className="text-center">
+                    <a href="#" style={{ color: '#97BF0F' }}>
+                      <i className="fa fa-check mr-2" />
+                    </a>
+                    <a href="#" style={{ color: '#97BF0F' }}>
+                      <i className="fa fa-remove mr-2" />
+                    </a>
+                  </div>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
@@ -96,4 +46,5 @@ const Panel = () => {
   );
 };
 
-export default Panel;
+export default connect(mapRentsToProps)(Panel);
+// export default Panel;
