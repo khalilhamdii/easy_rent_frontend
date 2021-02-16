@@ -1,8 +1,18 @@
 import React from 'react';
 
-const RentForm = () => {
+const RentForm = (props) => {
+  const { formStatus, handleRentClick } = props;
+
   return (
-    <div className="modal fade show" role="dialog" tabIndex={-1}>
+    <div
+      className="modal fade show"
+      role="dialog"
+      tabIndex={-1}
+      style={{
+        display: formStatus ? 'block' : 'none',
+        backgroundColor: 'rgba(0, 0, 0, 0.4)',
+      }}
+    >
       <div className="modal-dialog" role="document">
         <div className="modal-content">
           <div className="modal-header" style={{ background: '#97BF0F' }}>
@@ -10,6 +20,7 @@ const RentForm = () => {
               Car rent form
             </h4>
             <button
+              onClick={handleRentClick}
               type="button"
               className="close"
               data-dismiss="modal"
@@ -72,23 +83,22 @@ const RentForm = () => {
                   placeholder="Please enter location"
                 />
               </div>
+              <button
+                onClick={handleRentClick}
+                className="btn btn-light"
+                type="button"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <button
+                className="btn btn-primary"
+                type="submit"
+                style={{ background: '#97BF0F', borderStyle: 'none' }}
+              >
+                Submit
+              </button>
             </form>
-          </div>
-          <div className="modal-footer">
-            <button
-              className="btn btn-light"
-              type="button"
-              data-dismiss="modal"
-            >
-              Close
-            </button>
-            <button
-              className="btn btn-primary"
-              type="submit"
-              style={{ background: '#97BF0F', borderStyle: 'none' }}
-            >
-              Submit
-            </button>
           </div>
         </div>
       </div>

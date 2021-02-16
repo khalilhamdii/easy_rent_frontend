@@ -7,6 +7,7 @@ import Home from '../components/Home';
 import SideBar from '../components/SideBar';
 import Login from '../components/Login';
 import Signup from '../components/Signup';
+import CarDetails from '../components/CarDetails';
 
 const Routes = () => {
   return (
@@ -17,6 +18,7 @@ const Routes = () => {
           <Route path="/" exact component={Home} />
           <Route path="/login" exact component={Login} />
           <Route path="/signup" exact component={Signup} />
+          <Route path="/car" exact component={CarDetails} />
         </Switch>
       </div>
     </BrowserRouter>
