@@ -34,9 +34,6 @@ const login = () => {
             Log In
           </button>
         </div>
-        <a className="forgot" href="/">
-          Forgot your email or password?
-        </a>
       </form>
     </div>
   );

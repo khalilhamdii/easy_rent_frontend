@@ -22,7 +22,7 @@ const CarDetails = () => {
           <br />
         </h6>
         <div className="d-flex justify-content-between mt-2 ">
-          <div className="d-flex align-items-center col-7">
+          <div className="d-flex align-items-center ml-5 col-7">
             <img className="w-100" src={carImg} style={{ maxWidth: '40vw' }} />
           </div>
           <div className="col-4" style={{ padding: 0 }}>
