@@ -9,6 +9,7 @@ import Login from '../components/Login';
 import Signup from '../components/Signup';
 import CarDetails from '../components/CarDetails';
 import User from '../components/User';
+import Panel from '../components/Panel';
 
 const Routes = () => {
   return (
@@ -21,6 +22,7 @@ const Routes = () => {
           <Route path="/signup" exact component={Signup} />
           <Route path="/car" exact component={CarDetails} />
           <Route path="/user" exact component={User} />
+          <Route path="/panel" exact component={Panel} />
         </Switch>
       </div>
     </BrowserRouter>
