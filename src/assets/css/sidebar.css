@@ -38,7 +38,8 @@ ul li a {
 }
 
 ul li a:hover,
-ul li a:focus {
+ul li a:focus,
+ul li a.active {
   color: white;
   background-color: #97bf0f;
 }

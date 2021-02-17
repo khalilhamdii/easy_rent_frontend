@@ -8,6 +8,11 @@ const SideBar = (props) => {
   const { session } = props;
   const [navToggle, setNavToggle] = useState(false);
 
+  const handleNavClick = (target) => {
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach((item) => item.classList.remove('active'));
+    target.classList.add('active');
+  };
   const handleNavToggle = () => {
     setNavToggle(!navToggle);
   };
@@ -25,19 +30,43 @@ const SideBar = (props) => {
         </div>
         <ul className="list-unstyled">
           <li>
-            <Link to="/">HOME</Link>
+            <Link
+              className="nav-link active"
+              onClick={(e) => handleNavClick(e.target)}
+              to="/"
+            >
+              HOME
+            </Link>
           </li>
           <li>
-            <Link to="/cars">CARS</Link>
+            <Link
+              className="nav-link"
+              onClick={(e) => handleNavClick(e.target)}
+              to="/cars"
+            >
+              CARS
+            </Link>
           </li>
           {session.status === 'LOGGED_IN' && session.role === 'USER' ? (
             <li>
-              <Link to="/user">PROFIL</Link>
+              <Link
+                className="nav-link"
+                onClick={(e) => handleNavClick(e.target)}
+                to="/user"
+              >
+                PROFIL
+              </Link>
             </li>
           ) : null}
           {session.status === 'LOGGED_IN' && session.role === 'ADMIN' ? (
             <li>
-              <Link to="/panel">PANEL</Link>
+              <Link
+                className="nav-link"
+                onClick={(e) => handleNavClick(e.target)}
+                to="/panel"
+              >
+                PANEL
+              </Link>
             </li>
           ) : null}
         </ul>

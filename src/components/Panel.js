@@ -20,7 +20,7 @@ const Panel = (props) => {
           </thead>
           <tbody>
             {rents.map((rent) => (
-              <tr>
+              <tr key={rent.id}>
                 <td>{rent.status ? 'Rented' : 'Pending'}</td>
                 <td>{rent.user_name}</td>
                 <td>{rent.model}</td>
