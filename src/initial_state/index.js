@@ -2,6 +2,14 @@ import car_1 from '../assets/images/cars/1.jpeg';
 import car_2 from '../assets/images/cars/2.jpeg';
 
 export default {
+  sessionReducer: {
+    session: {
+      status: 'LOGGED_IN',
+      user_id: '1',
+      user: 'Khalil Hamdi',
+      role: 'ADMIN',
+    },
+  },
   rentsReducer: {
     rents: [
       {

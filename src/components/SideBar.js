@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { mapSessionToProps } from '../helpers/index';
 import '../assets/css/sidebar.css';
 
-const SideBar = () => {
+const SideBar = (props) => {
+  const { session } = props;
   const [navToggle, setNavToggle] = useState(false);
 
   const handleNavToggle = () => {
@@ -27,25 +30,42 @@ const SideBar = () => {
           <li>
             <Link to="/cars">CARS</Link>
           </li>
-          <li>
-            <Link to="/user">PROFIL</Link>
-          </li>
-          <li>
-            <Link to="/panel">PANEL</Link>
-          </li>
+          {session.status === 'LOGGED_IN' && session.role === 'USER' ? (
+            <li>
+              <Link to="/user">PROFIL</Link>
+            </li>
+          ) : null}
+          {session.status === 'LOGGED_IN' && session.role === 'ADMIN' ? (
+            <li>
+              <Link to="/panel">PANEL</Link>
+            </li>
+          ) : null}
         </ul>
         <div className="d-flex flex-column align-items-center mt-5">
-          <Link
-            to="/signup"
-            className="btn rounded-pill btn-customized w-75 mb-2"
-          >
-            SIGN UP
-          </Link>
+          {session.status === 'LOGGED_OUT' ? (
+            <>
+              <Link
+                to="/signup"
+                className="btn rounded-pill btn-customized w-75 mb-2"
+              >
+                SIGN UP
+              </Link>
 
-          <span style={{ fontSize: '13px' }}>Already member ?&nbsp;</span>
-          <Link to="/login" style={{ color: '#97BF0F' }}>
-            Login
-          </Link>
+              <span style={{ fontSize: '13px' }}>Already member ?&nbsp;</span>
+              <Link to="/login" style={{ color: '#97BF0F' }}>
+                Login
+              </Link>
+            </>
+          ) : (
+            <>
+              <span style={{ fontSize: '13px' }}>
+                Logged In as : <b>{session.user}</b>
+              </span>
+              <Link to="/login" style={{ color: '#97BF0F' }}>
+                Logout
+              </Link>
+            </>
+          )}
         </div>
         <div className="w-100 mb-3 nav-bottom">
           <div
@@ -72,4 +92,4 @@ const SideBar = () => {
   );
 };
 
-export default SideBar;
+export default connect(mapSessionToProps)(SideBar);

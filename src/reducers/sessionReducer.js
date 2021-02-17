@@ -3,6 +3,7 @@ import { LOGIN, LOGOUT } from '../constants/index';
 const initialState = {
   session: {
     status: 'LOGGED_OUT',
+    user_id: '',
     user: '',
     role: '',
   },
