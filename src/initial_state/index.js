@@ -7,7 +7,7 @@ export default {
       status: 'LOGGED_IN',
       user_id: '1',
       user: 'Khalil Hamdi',
-      role: 'ADMIN',
+      role: 'USER',
     },
   },
   rentsReducer: {

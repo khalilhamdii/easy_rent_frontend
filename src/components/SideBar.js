@@ -22,7 +22,7 @@ const SideBar = (props) => {
         <i className="fa fa-bars show-icon"></i>
       </a>
       <nav
-        className="col-2 sidebar"
+        className="col-2 sidebar flex-grow-1"
         style={{ display: !navToggle ? 'block' : 'none' }}
       >
         <div className="mb-5 logo">
