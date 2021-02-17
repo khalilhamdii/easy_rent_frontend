@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { mapCarsToProps } from '../helpers';
 
-const CarDetails = () => {
+const CarDetails = (props) => {
   const [formStatus, setFormStatus] = useState(false);
   const { cars } = props;
   const {
@@ -13,7 +13,8 @@ const CarDetails = () => {
       params: { id },
     },
   } = props;
-  const car = cars.filter((car) => car.id === id)[0];
+
+  const car = cars.filter((car) => car.id === parseInt(id))[0];
   const handleRentClick = () => {
     setFormStatus(!formStatus);
   };
@@ -21,16 +22,21 @@ const CarDetails = () => {
     <>
       <div className="d-flex flex-column justify-content-center pr-5 vh-100 w-100">
         <h5 style={{ textAlign: 'right' }}>
-          Kia Rio 2017
+          {car.model}
           <br />
         </h5>
         <h6 className="text-muted" style={{ textAlign: 'right' }}>
-          15$/Day
+          {car.price_per_day}/Day
           <br />
         </h6>
         <div className="d-flex justify-content-between mt-2 ">
           <div className="d-flex align-items-center ml-5 col-7">
-            <img className="w-100" src={carImg} style={{ maxWidth: '40vw' }} />
+            <img
+              className="w-100"
+              src={car.car_img}
+              alt={car.model}
+              style={{ maxWidth: '40vw' }}
+            />
           </div>
           <div className="col-4" style={{ padding: 0 }}>
             <div
@@ -45,45 +51,45 @@ const CarDetails = () => {
                   <tbody>
                     <tr>
                       <td>COLOR</td>
-                      <td>White</td>
+                      <td>{car.color}</td>
                     </tr>
                     <tr>
                       <td>BODY STYLE</td>
-                      <td>Sedan</td>
+                      <td>{car.body_style}</td>
                     </tr>
                     <tr>
                       <td>DOORS</td>
-                      <td>4</td>
+                      <td>{car.doors}</td>
                     </tr>
                     <tr>
                       <td>
                         LUGGAGES
                         <br />
                       </td>
-                      <td>3</td>
+                      <td>{car.luggages}</td>
                     </tr>
                     <tr>
                       <td>SEATS</td>
-                      <td>5</td>
+                      <td>{car.seats}</td>
                     </tr>
                     <tr>
                       <td>
                         ENGINE
                         <br />
                       </td>
-                      <td>V</td>
+                      <td>{car.engine}</td>
                     </tr>
                     <tr>
                       <td>EMISSIONS CLASS</td>
-                      <td>Euro 6</td>
+                      <td>{car.emissions_class}</td>
                     </tr>
                     <tr>
                       <td>TRANSMISSION</td>
-                      <td>Automatic</td>
+                      <td>{car.transmission}</td>
                     </tr>
                     <tr>
                       <td>RENT DEPOSIT</td>
-                      <td>300$</td>
+                      <td>{car.rent_deposit}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -100,7 +106,7 @@ const CarDetails = () => {
           </div>
         </div>
         <div className="w-100" style={{ textAlign: 'left' }}>
-          <Link to="/">
+          <Link to="/cars">
             <i className="fa fa-caret-left return-btn" />
           </Link>
         </div>
