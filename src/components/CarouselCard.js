@@ -3,7 +3,7 @@ import carImg from '../assets/images/cars/1.jpeg';
 
 const CarouselCard = () => {
   return (
-    <div className="card col-3" style={{ borderStyle: 'none' }}>
+    <div className="card mx-2" style={{ borderStyle: 'none' }}>
       <img className="card-img-top w-100 d-block" src={carImg} />
       <div className="card-body" style={{ padding: '0px' }}>
         <h4 className="card-title" style={{ fontSize: '14px' }}>

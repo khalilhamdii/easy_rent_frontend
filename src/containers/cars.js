@@ -11,7 +11,7 @@ const cars = (props) => {
         <h4 style={{ fontWeight: 'bold' }}>AVAILABLE CARS</h4>
         <h6 className="text-muted">Please select a car model</h6>
       </div>
-      <div className="row">
+      <div className="row mb-5">
         {cars.map((car) => (
           <CarCard key={car.id} car={car} />
         ))}
