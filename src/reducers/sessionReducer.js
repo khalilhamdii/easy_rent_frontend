@@ -4,6 +4,7 @@ const initialState = {
   session: {
     status: 'LOGGED_OUT',
     user: '',
+    role: '',
   },
 };
 
