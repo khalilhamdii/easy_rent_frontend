@@ -4,6 +4,7 @@ import '../assets/css/cardetails.css';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { mapCarsToProps } from '../helpers';
+import { addRent } from '../actions/index';
 
 const CarDetails = (props) => {
   const [formStatus, setFormStatus] = useState(false);
@@ -116,4 +117,4 @@ const CarDetails = (props) => {
   );
 };
 
-export default connect(mapCarsToProps)(CarDetails);
+export default connect(mapCarsToProps, { addRent })(CarDetails);

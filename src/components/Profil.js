@@ -1,6 +1,6 @@
 import React from 'react';
 
-const User = () => {
+const Profil = () => {
   return (
     <div className="container d-flex flex-column mt-5 ">
       <h4>My rented cars</h4>
@@ -37,4 +37,4 @@ const User = () => {
   );
 };
 
-export default User;
+export default Profil;

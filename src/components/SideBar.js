@@ -52,7 +52,7 @@ const SideBar = (props) => {
               <Link
                 className="nav-link"
                 onClick={(e) => handleNavClick(e.target)}
-                to="/user"
+                to="/profil"
               >
                 PROFIL
               </Link>
@@ -87,9 +87,8 @@ const SideBar = (props) => {
             </>
           ) : (
             <>
-              <span style={{ fontSize: '13px' }}>
-                Logged In as : <b>{session.user}</b>
-              </span>
+              <span style={{ fontSize: '13px' }}>Logged In as :</span>
+              <h6 className="font-weight-bold">{session.user}</h6>
               <Link to="/login" style={{ color: '#97BF0F' }}>
                 Logout
               </Link>
