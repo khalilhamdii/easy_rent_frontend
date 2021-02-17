@@ -1,18 +1,26 @@
 import React from 'react';
-import carImg from '../assets/images/download.jpeg';
-
-const CarCard = () => {
+import { Link } from 'react-router-dom';
+const CarCard = (props) => {
+  const { car } = props;
   return (
-    <div className="card col-3" style={{ borderStyle: 'none' }}>
-      <img className="card-img-top w-100 d-block" src={carImg} />
-      <div className="card-body" style={{ padding: '0px' }}>
-        <h4 className="card-title" style={{ fontSize: '14px' }}>
-          Kia Rio 2017
-        </h4>
-        <p className="text-muted" style={{ fontSize: '12px' }}>
-          white, sedan, 4 doors, luggages: 3, petrol, automatic, front-wheel
-          drive, euro 6<br />
-        </p>
+    <div className="col-sm-6 col-md-4 col-lg-3 mt-4">
+      <div className="card">
+        <img className="card-img-top" src={car.car_img} alt={`${car.model}`} />
+        <div className="card-block p-2">
+          <h4 className="card-title text-truncate mt-3">{car.model}</h4>
+          <div className="meta">
+            <h6>{`Price per day : ${car.price_per_day}`}</h6>
+          </div>
+        </div>
+        <div className="card-footer text-success ">
+          {car.color}
+          <Link
+            to={`/cars/${car.id}`}
+            className="btn btn-secondary float-right btn-sm"
+          >
+            Show details
+          </Link>
+        </div>
       </div>
     </div>
   );

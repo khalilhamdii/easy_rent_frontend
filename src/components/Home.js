@@ -1,5 +1,5 @@
 import React from 'react';
-import CarCard from './CarCard';
+import CarouselCard from './CarouselCard';
 import '../assets/css/home.css';
 // import { Link } from 'react-router-dom';
 // import styled from 'styled-components';
@@ -13,9 +13,9 @@ const Home = () => {
         <div className="mt-5 w-100" style={{ textAlign: 'left' }}>
           <i className="fa fa-caret-left left-arrow"></i>
         </div>
-        <CarCard />
-        <CarCard />
-        <CarCard />
+        <CarouselCard />
+        <CarouselCard />
+        <CarouselCard />
 
         <div className="mt-5 w-100" style={{ textAlign: 'right' }}>
           <i className="fa fa-caret-right right-arrow"></i>

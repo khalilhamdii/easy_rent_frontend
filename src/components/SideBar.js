@@ -25,7 +25,7 @@ const SideBar = () => {
             <Link to="/">HOME</Link>
           </li>
           <li>
-            <Link to="/car">CAR</Link>
+            <Link to="/cars">CARS</Link>
           </li>
           <li>
             <Link to="/user">PROFIL</Link>

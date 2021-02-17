@@ -1,12 +1,19 @@
 import React, { useState } from 'react';
 import RentForm from './RentForm';
 import '../assets/css/cardetails.css';
-import carImg from '../assets/images/download.jpeg';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { mapCarsToProps } from '../helpers';
 
 const CarDetails = () => {
   const [formStatus, setFormStatus] = useState(false);
-
+  const { cars } = props;
+  const {
+    match: {
+      params: { id },
+    },
+  } = props;
+  const car = cars.filter((car) => car.id === id)[0];
   const handleRentClick = () => {
     setFormStatus(!formStatus);
   };
@@ -67,8 +74,8 @@ const CarDetails = () => {
                       <td>V</td>
                     </tr>
                     <tr>
-                      <td>BODY STYLE</td>
-                      <td>Sedan</td>
+                      <td>EMISSIONS CLASS</td>
+                      <td>Euro 6</td>
                     </tr>
                     <tr>
                       <td>TRANSMISSION</td>
@@ -103,4 +110,4 @@ const CarDetails = () => {
   );
 };
 
-export default CarDetails;
+export default connect(mapCarsToProps)(CarDetails);
