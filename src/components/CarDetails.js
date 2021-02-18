@@ -8,20 +8,27 @@ import { addRent } from '../actions/index';
 
 const CarDetails = (props) => {
   const [formStatus, setFormStatus] = useState(false);
-  const { cars, addRent } = props;
+  const { cars, addRent, session } = props;
   const {
     match: {
       params: { id },
     },
   } = props;
-
   const car = cars.filter((car) => car.id === parseInt(id))[0];
+  const models = cars.map((car) => car.model);
+  const uniqModels = models.filter(
+    (item, index) => models.indexOf(item) === index
+  );
+  const info = {
+    userName: session.userName,
+    model: car.model,
+  };
   const handleRentClick = () => {
     setFormStatus(!formStatus);
   };
 
   const handleAddRent = (rent) => {
-    addRent(rent);
+    addRent({ ...rent, user_id: session.user_id });
   };
   return (
     <>
@@ -120,6 +127,8 @@ const CarDetails = (props) => {
         formStatus={formStatus}
         handleRentClick={handleRentClick}
         handleAddRent={handleAddRent}
+        uniqModels={uniqModels}
+        info={info}
       />
     </>
   );

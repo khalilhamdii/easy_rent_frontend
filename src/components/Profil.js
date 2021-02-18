@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { mapRentsToProps } from '../helpers';
 
 const Profil = () => {
   return (
@@ -37,4 +39,4 @@ const Profil = () => {
   );
 };
 
-export default Profil;
+export default connect(mapRentsToProps)(Profil);

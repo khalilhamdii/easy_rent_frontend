@@ -2,7 +2,13 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 
 const RentForm = (props) => {
-  const { formStatus, handleRentClick, handleAddRent } = props;
+  const {
+    formStatus,
+    handleRentClick,
+    handleAddRent,
+    uniqModels,
+    info,
+  } = props;
   const { register, errors, handleSubmit } = useForm();
   const onSubmit = (data) => {
     console.log(data);
@@ -47,6 +53,7 @@ const RentForm = (props) => {
                   className="form-control"
                   type="text"
                   placeholder="Please enter your name"
+                  defaultValue={info.userName}
                 />
                 {errors.userName && errors.userName.type === 'required' && (
                   <span className="text-danger">This is required</span>
@@ -59,13 +66,17 @@ const RentForm = (props) => {
                 <select
                   name="model"
                   className="form-control"
+                  defaultValue={info.model}
                   ref={register({ required: true })}
                 >
-                  <option value={12} selected>
-                    This is item 1
+                  <option key={'defaultModel'} value="defaultModel" disabled>
+                    Select car model
                   </option>
-                  <option value={13}>This is item 2</option>
-                  <option value={14}>This is item 3</option>
+                  {uniqModels.map((model) => (
+                    <option key={model} value={model}>
+                      {model}
+                    </option>
+                  ))}
                 </select>
               </div>
               <div className="form-group">
@@ -121,9 +132,7 @@ const RentForm = (props) => {
                   className="form-control"
                   ref={register({ required: true })}
                 >
-                  <option value={12} selected>
-                    Location 1
-                  </option>
+                  <option value={12}>Location 1</option>
                   <option value={13}>Location 2</option>
                   <option value={14}>Location 3</option>
                 </select>

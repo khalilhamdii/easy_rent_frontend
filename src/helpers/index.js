@@ -4,8 +4,8 @@ export const mapRentsToProps = (state) => {
 };
 
 export const mapCarsToProps = (state) => {
-  const { carsReducer } = state;
-  return { cars: carsReducer.cars };
+  const { carsReducer, sessionReducer } = state;
+  return { cars: carsReducer.cars, session: sessionReducer.session };
 };
 
 export const mapSessionToProps = (state) => {

@@ -6,7 +6,7 @@ export default {
     session: {
       status: 'LOGGED_IN',
       user_id: '1',
-      user: 'Khalil Hamdi',
+      userName: 'Khalil Hamdi',
       role: 'USER',
     },
   },

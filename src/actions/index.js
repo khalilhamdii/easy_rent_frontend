@@ -4,5 +4,5 @@ let rentId = 0;
 
 export const addRent = (rent) => ({
   type: ADD_RENT,
-  payload: { ...rent, id: ++rentId, status: 'PENDING' },
+  payload: { ...rent, id: ++rentId, status: false },
 });

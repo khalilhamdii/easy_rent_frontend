@@ -88,7 +88,7 @@ const SideBar = (props) => {
           ) : (
             <>
               <span style={{ fontSize: '13px' }}>Logged In as :</span>
-              <h6 className="font-weight-bold">{session.user}</h6>
+              <h6 className="font-weight-bold">{session.userName}</h6>
               <Link to="/login" style={{ color: '#97BF0F' }}>
                 Logout
               </Link>
