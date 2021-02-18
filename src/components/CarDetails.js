@@ -8,7 +8,7 @@ import { addRent } from '../actions/index';
 
 const CarDetails = (props) => {
   const [formStatus, setFormStatus] = useState(false);
-  const { cars } = props;
+  const { cars, addRent } = props;
   const {
     match: {
       params: { id },
@@ -18,6 +18,10 @@ const CarDetails = (props) => {
   const car = cars.filter((car) => car.id === parseInt(id))[0];
   const handleRentClick = () => {
     setFormStatus(!formStatus);
+  };
+
+  const handleAddRent = (rent) => {
+    addRent(rent);
   };
   return (
     <>
@@ -112,7 +116,11 @@ const CarDetails = (props) => {
           </Link>
         </div>
       </div>
-      <RentForm formStatus={formStatus} handleRentClick={handleRentClick} />
+      <RentForm
+        formStatus={formStatus}
+        handleRentClick={handleRentClick}
+        handleAddRent={handleAddRent}
+      />
     </>
   );
 };

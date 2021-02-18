@@ -2,10 +2,11 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 
 const RentForm = (props) => {
-  const { formStatus, handleRentClick } = props;
+  const { formStatus, handleRentClick, handleAddRent } = props;
   const { register, errors, handleSubmit } = useForm();
   const onSubmit = (data) => {
     console.log(data);
+    handleAddRent(data);
     handleRentClick();
   };
   return (
