@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { mapRentsToProps } from '../helpers';
+import { mapRentsToProps, differenceInDays } from '../helpers';
 
 const Profil = (props) => {
   const { rents, session } = props;
@@ -24,18 +24,28 @@ const Profil = (props) => {
             </tr>
           </thead>
           <tbody style={{ fontSize: 11 }}>
-            {userRents.map((rent) => (
-              <tr key={rent.id}>
-                <td>{rent.status ? 'Rented' : 'Pending'}</td>
-                <td>{rent.model}</td>
-                <td>{rent.pickUpDate}</td>
-                <td>{rent.pickUpTime}</td>
-                <td>{rent.returnDate}</td>
-                <td>{rent.returnTime}</td>
-                <td>7 days</td>
-                <td>$105</td>
-              </tr>
-            ))}
+            {userRents.map((rent) => {
+              const duration = differenceInDays(
+                rent.pickUpDate,
+                rent.pickUpTime,
+                rent.returnDate,
+                rent.returnTime
+              );
+              const totalPrice =
+                parseInt(duration) * parseInt(rent.pricePerDay);
+              return (
+                <tr key={rent.id}>
+                  <td>{rent.status ? 'Rented' : 'Pending'}</td>
+                  <td>{rent.model}</td>
+                  <td>{rent.pickUpDate}</td>
+                  <td>{rent.pickUpTime}</td>
+                  <td>{rent.returnDate}</td>
+                  <td>{rent.returnTime}</td>
+                  <td>{duration} days</td>
+                  <td>{totalPrice}$</td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>

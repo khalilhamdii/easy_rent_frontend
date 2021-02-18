@@ -9,7 +9,7 @@ const CarCard = (props) => {
         <div className="card-block p-2">
           <h4 className="card-title text-truncate mt-3">{car.model}</h4>
           <div className="text-muted">
-            <h6>{`Price per day : ${car.price_per_day}`}</h6>
+            <h6>{`Price per day : ${car.pricePerDay}$`}</h6>
           </div>
         </div>
         <div className="card-footer ">

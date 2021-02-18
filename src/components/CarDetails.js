@@ -45,7 +45,7 @@ const CarDetails = (props) => {
           <br />
         </h5>
         <h6 className="text-muted" style={{ textAlign: 'right' }}>
-          {car.pricePerDay}/Day
+          {car.pricePerDay}$/Day
           <br />
         </h6>
         <div className="d-flex justify-content-between mt-2 ">
