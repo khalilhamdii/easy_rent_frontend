@@ -27,8 +27,15 @@ const CarDetails = (props) => {
     setFormStatus(!formStatus);
   };
 
-  const handleAddRent = (rent) => {
-    addRent({ ...rent, user_id: session.user_id });
+  const handleAddRent = (data) => {
+    const rent = {
+      ...data,
+      user_id: session.user_id,
+      pricePerDay: car.pricePerDay,
+      status: false,
+    };
+    console.log(rent);
+    addRent(rent);
   };
   return (
     <>
@@ -38,7 +45,7 @@ const CarDetails = (props) => {
           <br />
         </h5>
         <h6 className="text-muted" style={{ textAlign: 'right' }}>
-          {car.price_per_day}/Day
+          {car.pricePerDay}/Day
           <br />
         </h6>
         <div className="d-flex justify-content-between mt-2 ">

@@ -132,9 +132,9 @@ const RentForm = (props) => {
                   className="form-control"
                   ref={register({ required: true })}
                 >
-                  <option value={12}>Location 1</option>
-                  <option value={13}>Location 2</option>
-                  <option value={14}>Location 3</option>
+                  <option value="Location 1">Location 1</option>
+                  <option value="Location 2">Location 2</option>
+                  <option value="Location 3">Location 3</option>
                 </select>
               </div>
               <button
