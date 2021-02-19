@@ -1,10 +1,10 @@
 /* eslint-disable arrow-parens */
-import React from 'react';
+import React, { useEffect } from 'react';
 // import PropTypes from 'prop-types';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { login, logout } from '../actions/index';
+import { loginHandler, logoutHandler } from '../actions/index';
 import Home from '../components/Home';
 import SideBar from '../components/SideBar';
 import Login from '../components/Login';
@@ -14,7 +14,22 @@ import CarDetails from '../components/CarDetails';
 import Profil from '../components/Profil';
 import Panel from '../components/Panel';
 
-const Routes = () => {
+const Routes = (props) => {
+  const loginStatus = () => {
+    axios
+      .get('http://localhost:3001/logged_in', { withCredentials: true })
+      .then((response) => {
+        if (response.data.logged_in) {
+          props.loginHandler(response);
+        } else {
+          props.logoutHandler();
+        }
+      })
+      .catch((error) => console.log('api errors:', error));
+  };
+  useEffect(() => {
+    loginStatus();
+  }, []);
   return (
     <BrowserRouter>
       <div
@@ -38,4 +53,4 @@ const Routes = () => {
   );
 };
 
-export default connect(null, { login, logout })(Routes);
+export default connect(null, { loginHandler, logoutHandler })(Routes);

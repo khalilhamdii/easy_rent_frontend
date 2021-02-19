@@ -1,9 +1,16 @@
 import React from 'react';
-
-const login = () => {
+import { useForm } from 'react-hook-form';
+import { connect } from 'react-redux';
+import { loginHandler } from '../actions/index';
+const Login = (props) => {
+  const { register, errors, handleSubmit } = useForm();
+  const onSubmit = (data) => {
+    console.log(data);
+    props.loginHandler(data);
+  };
   return (
     <div className="login-clean w-100 vh-100">
-      <form>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className="illustration" style={{ padding: '0px' }}>
           <i
             className="icon ion-ios-navigate"
@@ -19,7 +26,11 @@ const login = () => {
             type="email"
             name="email"
             placeholder="Email"
+            ref={register({ required: true })}
           />
+          {errors.email && errors.email.type === 'required' && (
+            <span className="text-danger">This is required</span>
+          )}
         </div>
         <div className="form-group">
           <input
@@ -27,7 +38,11 @@ const login = () => {
             type="password"
             name="password"
             placeholder="Password"
+            ref={register({ required: true })}
           />
+          {errors.email && errors.email.type === 'required' && (
+            <span className="text-danger">This is required</span>
+          )}
         </div>
         <div className="form-group">
           <button className="btn btn-block btn-customized" type="submit">
@@ -39,4 +54,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default connect(null, { loginHandler })(Login);

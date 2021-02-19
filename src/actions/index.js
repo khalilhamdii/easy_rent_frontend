@@ -7,7 +7,7 @@ export const addRent = (rent) => ({
   payload: { rent: { ...rent, id: ++rentId } },
 });
 
-export const login = (data) => ({
+export const loginHandler = (data) => ({
   type: LOGIN,
   payload: {
     isLoggedIn: true,
@@ -15,7 +15,7 @@ export const login = (data) => ({
   },
 });
 
-export const logout = () => ({
+export const logoutHandler = () => ({
   type: LOGOUT,
   payload: {
     isLoggedIn: false,

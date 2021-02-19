@@ -47,7 +47,7 @@ const SideBar = (props) => {
               CARS
             </Link>
           </li>
-          {session.status === 'LOGGED_IN' && session.role === 'USER' ? (
+          {session.isLoggedIn && session.user.role === 'USER' ? (
             <li>
               <Link
                 className="nav-link"
@@ -58,7 +58,7 @@ const SideBar = (props) => {
               </Link>
             </li>
           ) : null}
-          {session.status === 'LOGGED_IN' && session.role === 'ADMIN' ? (
+          {session.isLoggedIn && session.user.role === 'ADMIN' ? (
             <li>
               <Link
                 className="nav-link"
@@ -71,7 +71,7 @@ const SideBar = (props) => {
           ) : null}
         </ul>
         <div className="d-flex flex-column align-items-center mt-5">
-          {session.status === 'LOGGED_OUT' ? (
+          {!session.isLoggedIn ? (
             <>
               <Link
                 to="/signup"
@@ -88,7 +88,7 @@ const SideBar = (props) => {
           ) : (
             <>
               <span style={{ fontSize: '13px' }}>Logged In as :</span>
-              <h6 className="font-weight-bold">{session.userName}</h6>
+              <h6 className="font-weight-bold">{session.user.userName}</h6>
               <Link to="/login" style={{ color: '#97BF0F' }}>
                 Logout
               </Link>
