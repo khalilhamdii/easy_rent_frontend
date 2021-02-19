@@ -2,57 +2,6 @@ import car_1 from '../assets/images/cars/1.jpeg';
 import car_2 from '../assets/images/cars/2.jpeg';
 
 export default {
-  // sessionReducer: {
-  //   session: {
-  //     status: 'LOGGED_IN',
-  //     user_id: 1,
-  //     userName: 'Khalil Hamdi',
-  //     role: 'USER',
-  //   },
-  // },
-  rentsReducer: {
-    rents: [
-      {
-        id: 1,
-        status: true,
-        user_id: 1,
-        userName: 'John Smith',
-        model: 'Kia Rio',
-        pickUpDate: '2021-02-18',
-        returnDate: '2021-02-21',
-        pickUpTime: '08:00',
-        returnTime: '17:04',
-        location: 'Agency 2',
-        pricePerDay: '15',
-      },
-      {
-        id: 2,
-        status: true,
-        user_id: 2,
-        userName: 'John Smith',
-        model: 'Golf 7',
-        pickUpDate: '2021-02-18',
-        returnDate: '2021-02-21',
-        pickUpTime: '08:00',
-        returnTime: '17:04',
-        location: 'Agency 1',
-        pricePerDay: '30',
-      },
-      {
-        id: 3,
-        status: false,
-        user_id: 3,
-        userName: 'John Smith',
-        model: 'Seat Leon',
-        pickUpDate: '2021-02-18',
-        returnDate: '2021-02-21',
-        pickUpTime: '08:00',
-        returnTime: '17:04',
-        location: 'Agency 3',
-        pricePerDay: '20',
-      },
-    ],
-  },
   carsReducer: {
     cars: [
       {

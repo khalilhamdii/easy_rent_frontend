@@ -1,10 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import axios from 'axios';
 import { mapRentsToProps, differenceInDays } from '../helpers';
+import { addRents } from '../actions/index';
 
 const Profil = (props) => {
   const { rents, session } = props;
-  const userRents = rents.filter((rent) => rent.user_id === session.user_id);
+  const { id } = session.user;
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:3001/users/${id}/rents/`, {
+        withCredentials: true,
+      })
+      .then((response) => {
+        props.addRents(response.data);
+      })
+      .catch((error) => console.log('api errors:', error));
+  }, []);
   return (
     <div className="container d-flex flex-column mt-5 ">
       <h4>My rented cars</h4>
@@ -24,7 +37,7 @@ const Profil = (props) => {
             </tr>
           </thead>
           <tbody style={{ fontSize: 11 }}>
-            {userRents.map((rent) => {
+            {rents.map((rent) => {
               const duration = differenceInDays(
                 rent.pickUpDate,
                 rent.pickUpTime,
@@ -53,4 +66,4 @@ const Profil = (props) => {
   );
 };
 
-export default connect(mapRentsToProps)(Profil);
+export default connect(mapRentsToProps, { addRents })(Profil);
