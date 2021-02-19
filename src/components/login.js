@@ -1,12 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { connect } from 'react-redux';
+import axios from 'axios';
 import { loginHandler } from '../actions/index';
+
 const Login = (props) => {
+  const [errors, setErrors] = useState({});
   const { register, errors, handleSubmit } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
-    props.loginHandler(data);
+  const onSubmit = (user) => {
+    axios
+      .post('http://localhost:3001/login', { user }, { withCredentials: true })
+      .then((response) => {
+        if (response.data.logged_in) {
+          props.loginHandler(response.data);
+          redirect();
+        } else {
+          setErrors(response.data.errors);
+        }
+      })
+      .catch((error) => console.log('api errors:', error));
+  };
+
+  const redirect = () => {
+    this.props.history.push('/');
   };
   return (
     <div className="login-clean w-100 vh-100">
