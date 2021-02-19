@@ -60,7 +60,9 @@ const SideBar = (props) => {
           </li>
           <li>
             <Link
-              className={`nav-link ${location === '/cars' ? 'active' : ''}`}
+              className={`nav-link ${
+                location.includes('cars') ? 'active' : ''
+              }`}
               to="/cars"
             >
               CARS

@@ -20,7 +20,7 @@ const CarDetails = (props) => {
     (item, index) => models.indexOf(item) === index
   );
   const info = {
-    userName: session.userName,
+    userName: session.user.userName,
     model: car.model,
   };
   const handleRentClick = () => {
@@ -37,6 +37,26 @@ const CarDetails = (props) => {
     console.log(rent);
     addRent(rent);
   };
+
+  const RentButton = () => (
+    <button
+      onClick={handleRentClick}
+      className="btn w-75 mb-2 btn-customized"
+      type="button"
+    >
+      Rent car
+      <i className="fa fa-arrow-right ml-2" />
+    </button>
+  );
+
+  const LoginLink = () => (
+    <>
+      <h6>Please login to rent this car</h6>
+      <Link to="/login" style={{ color: '#97BF0F' }}>
+        Login
+      </Link>
+    </>
+  );
   return (
     <>
       <div className="d-flex flex-column justify-content-center pr-5 vh-100 w-100">
@@ -113,14 +133,7 @@ const CarDetails = (props) => {
                   </tbody>
                 </table>
               </div>
-              <button
-                onClick={handleRentClick}
-                className="btn w-75 mb-2 btn-customized"
-                type="button"
-              >
-                Rent car
-                <i className="fa fa-arrow-right ml-2" />
-              </button>
+              {session.isLoggedIn ? <RentButton /> : <LoginLink />}
             </div>
           </div>
         </div>
