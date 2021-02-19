@@ -16,7 +16,7 @@ const Profil = (props) => {
       .then((response) => {
         props.addRents(response.data);
       })
-      .catch((error) => console.log('api errors:', error));
+      .catch((error) => console.log('api errors:', error.response.data));
   }, []);
   return (
     <div className="container d-flex flex-column mt-5 ">

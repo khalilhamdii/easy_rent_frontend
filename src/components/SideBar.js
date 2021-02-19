@@ -11,7 +11,6 @@ const SideBar = (props) => {
   const { session } = props;
   const location = useLocation().pathname;
   const [navToggle, setNavToggle] = useState(false);
-  const [apiErrors, setApiErrors] = useState({});
   const handleNavToggle = () => {
     setNavToggle(!navToggle);
   };
@@ -26,12 +25,9 @@ const SideBar = (props) => {
         if (response.data.logged_out) {
           props.logoutHandler();
           redirect();
-        } else {
-          setApiErrors(response.data.errors);
-          console.log(apiErrors);
         }
       })
-      .catch((error) => console.log('api errors:', error));
+      .catch((error) => console.log('api errors:', error.response.data));
   };
 
   const redirect = () => {
