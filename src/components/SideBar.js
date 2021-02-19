@@ -9,14 +9,9 @@ import '../assets/css/sidebar.css';
 
 const SideBar = (props) => {
   const { session } = props;
-  console.log(session);
+  const location = useLocation().pathname;
   const [navToggle, setNavToggle] = useState(false);
   const [apiErrors, setApiErrors] = useState({});
-  const handleNavClick = (target) => {
-    const navLinks = document.querySelectorAll('.nav-link');
-    navLinks.forEach((item) => item.classList.remove('active'));
-    target.classList.add('active');
-  };
   const handleNavToggle = () => {
     setNavToggle(!navToggle);
   };
@@ -38,7 +33,7 @@ const SideBar = (props) => {
       })
       .catch((error) => console.log('api errors:', error));
   };
-  const location = useLocation().pathname;
+
   const redirect = () => {
     return location !== '/' ? props.history.push('/') : null;
   };
@@ -57,8 +52,7 @@ const SideBar = (props) => {
         <ul className="list-unstyled">
           <li>
             <Link
-              className="nav-link active"
-              onClick={(e) => handleNavClick(e.target)}
+              className={`nav-link ${location === '/' ? 'active' : ''}`}
               to="/"
             >
               HOME
@@ -66,8 +60,7 @@ const SideBar = (props) => {
           </li>
           <li>
             <Link
-              className="nav-link"
-              onClick={(e) => handleNavClick(e.target)}
+              className={`nav-link ${location === '/cars' ? 'active' : ''}`}
               to="/cars"
             >
               CARS
@@ -76,8 +69,7 @@ const SideBar = (props) => {
           {session.isLoggedIn && session.user.role === 'USER' ? (
             <li>
               <Link
-                className="nav-link"
-                onClick={(e) => handleNavClick(e.target)}
+                className={`nav-link ${location === '/profil' ? 'active' : ''}`}
                 to="/profil"
               >
                 PROFIL
@@ -87,8 +79,7 @@ const SideBar = (props) => {
           {session.isLoggedIn && session.user.role === 'ADMIN' ? (
             <li>
               <Link
-                className="nav-link"
-                onClick={(e) => handleNavClick(e.target)}
+                className={`nav-link ${location === '/panel' ? 'active' : ''}`}
                 to="/panel"
               >
                 PANEL
