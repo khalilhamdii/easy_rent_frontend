@@ -52,7 +52,7 @@ const CarDetails = (props) => {
           <div className="d-flex align-items-center ml-5 col-7">
             <img
               className="w-100"
-              src={car.car_img}
+              src={car.carImg}
               alt={car.model}
               style={{ maxWidth: '40vw' }}
             />
@@ -74,7 +74,7 @@ const CarDetails = (props) => {
                     </tr>
                     <tr>
                       <td>BODY STYLE</td>
-                      <td>{car.body_style}</td>
+                      <td>{car.bodyStyle}</td>
                     </tr>
                     <tr>
                       <td>DOORS</td>
@@ -100,7 +100,7 @@ const CarDetails = (props) => {
                     </tr>
                     <tr>
                       <td>EMISSIONS CLASS</td>
-                      <td>{car.emissions_class}</td>
+                      <td>{car.emissionsClass}</td>
                     </tr>
                     <tr>
                       <td>TRANSMISSION</td>
@@ -108,7 +108,7 @@ const CarDetails = (props) => {
                     </tr>
                     <tr>
                       <td>RENT DEPOSIT</td>
-                      <td>{car.rent_deposit}</td>
+                      <td>{car.rentDeposit}$</td>
                     </tr>
                   </tbody>
                 </table>

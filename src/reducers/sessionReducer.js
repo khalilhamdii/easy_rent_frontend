@@ -2,10 +2,8 @@ import { LOGIN, LOGOUT } from '../constants/index';
 
 const initialState = {
   session: {
-    status: 'LOGGED_OUT',
-    user_id: '',
-    userName: '',
-    role: '',
+    isLoggedIn: false,
+    user: {},
   },
 };
 
@@ -14,15 +12,18 @@ const sessionReducer = (state = initialState, action) => {
     case LOGIN: {
       return {
         ...state,
-        session: { status: 'LOGGED_IN', user: action.payload.user },
+        session: {
+          isLoggedIn: action.payload.isLoggedIn,
+          user: action.payload.user,
+        },
       };
     }
     case LOGOUT: {
       return {
         ...state,
         session: {
-          status: 'LOGGED_OUT',
-          user: '',
+          isLoggedIn: action.payload.isLoggedIn,
+          user: action.payload.user,
         },
       };
     }

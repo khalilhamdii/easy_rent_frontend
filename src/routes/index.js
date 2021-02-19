@@ -2,7 +2,9 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-// import { connect } from 'react-redux';
+import axios from 'axios';
+import { connect } from 'react-redux';
+import { login, logout } from '../actions/index';
 import Home from '../components/Home';
 import SideBar from '../components/SideBar';
 import Login from '../components/Login';
@@ -36,5 +38,4 @@ const Routes = () => {
   );
 };
 
-export default Routes;
-// export default connect(mealsStateToProps, { addMeals })(Routes);
+export default connect(null, { login, logout })(Routes);
