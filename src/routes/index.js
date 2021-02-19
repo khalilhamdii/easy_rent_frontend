@@ -20,7 +20,7 @@ const Routes = (props) => {
       .get('http://localhost:3001/logged_in', { withCredentials: true })
       .then((response) => {
         if (response.data.logged_in) {
-          props.loginHandler(response);
+          props.loginHandler(response.data);
         } else {
           props.logoutHandler();
         }

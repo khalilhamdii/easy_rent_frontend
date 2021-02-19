@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { connect } from 'react-redux';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { mapSessionToProps } from '../helpers/index';
 import { logoutHandler } from '../actions/index';
@@ -7,8 +9,9 @@ import '../assets/css/sidebar.css';
 
 const SideBar = (props) => {
   const { session } = props;
+  console.log(session);
   const [navToggle, setNavToggle] = useState(false);
-
+  const [apiErrors, setApiErrors] = useState({});
   const handleNavClick = (target) => {
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach((item) => item.classList.remove('active'));
@@ -16,6 +19,28 @@ const SideBar = (props) => {
   };
   const handleNavToggle = () => {
     setNavToggle(!navToggle);
+  };
+
+  const handleLogOut = () => {
+    const { user } = session;
+    props.logoutHandler();
+    axios
+      .post('http://localhost:3001/logout', { user }, { withCredentials: true })
+      .then((response) => {
+        console.log(response);
+        if (response.data.logged_out) {
+          props.logoutHandler();
+          redirect();
+        } else {
+          setApiErrors(response.data.errors);
+          console.log(apiErrors);
+        }
+      })
+      .catch((error) => console.log('api errors:', error));
+  };
+  const location = useLocation().pathname;
+  const redirect = () => {
+    return location !== '/' ? props.history.push('/') : null;
   };
   return (
     <>
@@ -93,7 +118,7 @@ const SideBar = (props) => {
               <Link
                 to="/login"
                 style={{ color: '#97BF0F' }}
-                onClick={props.logoutHandler}
+                onClick={handleLogOut}
               >
                 Logout
               </Link>
