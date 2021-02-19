@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { mapSessionToProps } from '../helpers/index';
+import { logoutHandler } from '../actions/index';
 import '../assets/css/sidebar.css';
 
 const SideBar = (props) => {
@@ -89,7 +90,11 @@ const SideBar = (props) => {
             <>
               <span style={{ fontSize: '13px' }}>Logged In as :</span>
               <h6 className="font-weight-bold">{session.user.userName}</h6>
-              <Link to="/login" style={{ color: '#97BF0F' }}>
+              <Link
+                to="/login"
+                style={{ color: '#97BF0F' }}
+                onClick={props.logoutHandler}
+              >
                 Logout
               </Link>
             </>
@@ -120,4 +125,4 @@ const SideBar = (props) => {
   );
 };
 
-export default connect(mapSessionToProps)(SideBar);
+export default connect(mapSessionToProps, { logoutHandler })(SideBar);
