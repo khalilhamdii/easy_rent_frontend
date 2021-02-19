@@ -5,7 +5,7 @@ import axios from 'axios';
 import { loginHandler } from '../actions/index';
 
 const Login = (props) => {
-  const [errors, setErrors] = useState({});
+  const [apiErrors, setApiErrors] = useState({});
   const { register, errors, handleSubmit } = useForm();
   const onSubmit = (user) => {
     axios
@@ -15,14 +15,15 @@ const Login = (props) => {
           props.loginHandler(response.data);
           redirect();
         } else {
-          setErrors(response.data.errors);
+          setApiErrors(response.data.errors);
+          console.log(apiErrors);
         }
       })
       .catch((error) => console.log('api errors:', error));
   };
 
   const redirect = () => {
-    this.props.history.push('/');
+    props.history.push('/');
   };
   return (
     <div className="login-clean w-100 vh-100">
