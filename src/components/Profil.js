@@ -7,17 +7,19 @@ import { addRents } from '../actions/index';
 const Profil = (props) => {
   const { rents, session } = props;
   const { id } = session.user;
-
+  const loginStatus = session.isLoggedIn;
   useEffect(() => {
-    axios
-      .get(`http://localhost:3001/users/${id}/rents/`, {
-        withCredentials: true,
-      })
-      .then((response) => {
-        props.addRents(response.data);
-      })
-      .catch((error) => console.log('api errors:', error.response.data));
-  }, []);
+    if (loginStatus) {
+      axios
+        .get(`http://localhost:3001/users/${id}/rents/`, {
+          withCredentials: true,
+        })
+        .then((response) => {
+          props.addRents(response.data);
+        })
+        .catch((error) => console.log('api errors:', error.response.data));
+    }
+  }, [loginStatus]);
   return (
     <div className="container d-flex flex-column mt-5 ">
       <h4>My rented cars</h4>
@@ -48,6 +50,13 @@ const Profil = (props) => {
                 parseInt(duration) * parseInt(rent.pricePerDay);
               return (
                 <tr key={rent.id}>
+                  <td>
+                    <div className="text-center">
+                      <a href="#" style={{ color: '#97BF0F' }}>
+                        <i className="fa fa-remove mr-2" />
+                      </a>
+                    </div>
+                  </td>
                   <td>{rent.status ? 'Rented' : 'Pending'}</td>
                   <td>{rent.model}</td>
                   <td>{rent.pickUpDate}</td>

@@ -144,7 +144,7 @@ a:focus {
 .table td,
 .table th {
   padding: 0.55rem;
-  vertical-align: top;
+  vertical-align: middle;
   border-bottom: 1px solid #dee2e6;
 }
 .col-3 {

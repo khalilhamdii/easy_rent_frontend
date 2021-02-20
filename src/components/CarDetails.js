@@ -35,7 +35,6 @@ const CarDetails = (props) => {
       pricePerDay: car.pricePerDay,
       status: false,
     };
-    console.log(rent);
     axios
       .post(`http://localhost:3001/users/${user_id}/rents/`, rent, {
         withCredentials: true,

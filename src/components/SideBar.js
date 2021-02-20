@@ -21,18 +21,13 @@ const SideBar = (props) => {
     axios
       .post('http://localhost:3001/logout', { user }, { withCredentials: true })
       .then((response) => {
-        console.log(response);
         if (response.data.logged_out) {
           props.logoutHandler();
-          redirect();
         }
       })
-      .catch((error) => console.log('api errors:', error.response.data));
+      .catch((error) => console.log('api errors:', error));
   };
 
-  const redirect = () => {
-    return location !== '/' ? props.history.push('/') : null;
-  };
   return (
     <>
       <a onClick={handleNavToggle}>
