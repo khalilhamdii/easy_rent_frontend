@@ -2,24 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { connect } from 'react-redux';
-import axios from 'axios';
 import { loginHandler } from '../actions/index';
+import { apiSignUp } from '../axios';
 
 const Signup = (props) => {
   const { register, errors, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
     const user = { ...data, role: 'USER' };
-    console.log(user);
-    axios
-      .post('http://localhost:3001/users', { user }, { withCredentials: true })
-      .then((response) => {
-        if (response.data.status === 'created') {
-          props.loginHandler(response.data);
-          redirect();
-        }
-      })
-      .catch((error) => console.log('api errors:', error.response.data));
+    apiSignUp(user, props.loginHandler, redirect);
   };
 
   const redirect = () => {

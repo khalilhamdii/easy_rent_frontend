@@ -1,25 +1,18 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
 import { mapRentsToProps } from '../helpers/index';
 import { addRents, removeRent } from '../actions/index';
+import { apiGetRents, apiRemoveRent } from '../axios/index';
 const Panel = (props) => {
   const { rents, session } = props;
   const loginStatus = session.isLoggedIn;
 
   const handleRentRemove = (id) => {
-    props.removeRent(id);
+    apiRemoveRent(id, props.removeRent);
   };
   useEffect(() => {
     if (loginStatus) {
-      axios
-        .get(`http://localhost:3001/rents/`, {
-          withCredentials: true,
-        })
-        .then((response) => {
-          props.addRents(response.data);
-        })
-        .catch((error) => console.log('api errors:', error));
+      apiGetRents(props.addRents);
     }
   }, [loginStatus]);
   return (
@@ -53,14 +46,14 @@ const Panel = (props) => {
                     </button>
                   </div>
                 </td>
-                <td>{rent.status ? 'Rented' : 'Pending'}</td>
+                <td>{rent.status}</td>
                 <td>{rent.userName}</td>
                 <td>{rent.model}</td>
                 <td>{rent.pickUpDate}</td>
                 <td>{rent.returnDate}</td>
                 <td>{rent.location}</td>
                 <td>
-                  {!rent.status ? (
+                  {rent.status !== 'Rented' ? (
                     <>
                       <div className="text-center">
                         <button

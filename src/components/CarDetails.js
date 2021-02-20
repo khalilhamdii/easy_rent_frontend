@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { mapCarsToProps } from '../helpers';
 import { addRent } from '../actions/index';
-import axios from 'axios';
+import { apiAddRent } from '../axios';
 
 const CarDetails = (props) => {
   const [formStatus, setFormStatus] = useState(false);
@@ -33,18 +33,9 @@ const CarDetails = (props) => {
     const rent = {
       ...data,
       pricePerDay: car.pricePerDay,
-      status: false,
+      status: 'Pending',
     };
-    axios
-      .post(`http://localhost:3001/users/${user_id}/rents/`, rent, {
-        withCredentials: true,
-      })
-      .then((response) => {
-        if (response.data.status === 'created') {
-          addRent(rent);
-        }
-      })
-      .catch((error) => console.log('api errors:', error.response.data));
+    apiAddRent(rent, user_id, addRent);
   };
 
   const RentButton = () => (

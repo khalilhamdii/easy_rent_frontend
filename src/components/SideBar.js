@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { connect } from 'react-redux';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { mapSessionToProps } from '../helpers/index';
 import { logoutHandler } from '../actions/index';
 import '../assets/css/sidebar.css';
+import { apiLogOut } from '../axios';
 
 const SideBar = (props) => {
   const { session } = props;
@@ -17,15 +17,7 @@ const SideBar = (props) => {
 
   const handleLogOut = () => {
     const { user } = session;
-    props.logoutHandler();
-    axios
-      .post('http://localhost:3001/logout', { user }, { withCredentials: true })
-      .then((response) => {
-        if (response.data.logged_out) {
-          props.logoutHandler();
-        }
-      })
-      .catch((error) => console.log('api errors:', error));
+    apiLogOut(user, props.logoutHandler);
   };
 
   return (

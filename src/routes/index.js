@@ -2,7 +2,6 @@
 import React, { useEffect } from 'react';
 // import PropTypes from 'prop-types';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import axios from 'axios';
 import { connect } from 'react-redux';
 import { loginHandler, logoutHandler } from '../actions/index';
 import Home from '../components/Home';
@@ -13,22 +12,11 @@ import Cars from '../containers/cars';
 import CarDetails from '../components/CarDetails';
 import Profil from '../components/Profil';
 import Panel from '../components/Panel';
+import { apiGetLoginStatus } from '../axios';
 
 const Routes = (props) => {
-  const loginStatus = () => {
-    axios
-      .get('http://localhost:3001/logged_in', { withCredentials: true })
-      .then((response) => {
-        if (response.data.logged_in) {
-          props.loginHandler(response.data);
-        } else {
-          props.logoutHandler();
-        }
-      })
-      .catch((error) => console.log('api errors:', error));
-  };
   useEffect(() => {
-    loginStatus();
+    apiGetLoginStatus(props.loginHandler, props.logoutHandler);
   }, []);
   return (
     <BrowserRouter>

@@ -57,7 +57,7 @@ const Profil = (props) => {
                       </a>
                     </div>
                   </td>
-                  <td>{rent.status ? 'Rented' : 'Pending'}</td>
+                  <td>{rent.status}</td>
                   <td>{rent.model}</td>
                   <td>{rent.pickUpDate}</td>
                   <td>{rent.pickUpTime}</td>
