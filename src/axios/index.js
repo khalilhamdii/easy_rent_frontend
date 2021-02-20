@@ -98,3 +98,14 @@ export const apiGetRents = (action) => {
     })
     .catch((error) => console.log('api errors:', error));
 };
+
+export const apiGetUserRents = (id, action) => {
+  axios
+    .get(`http://localhost:3001/users/${id}/rents/`, {
+      withCredentials: true,
+    })
+    .then((response) => {
+      action(response.data);
+    })
+    .catch((error) => console.log('api errors:', error.response.data));
+};

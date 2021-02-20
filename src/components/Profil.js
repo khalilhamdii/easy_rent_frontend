@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
 import { mapRentsToProps, differenceInDays } from '../helpers';
-import { addRents } from '../actions/index';
+import { addRents, removeRent } from '../actions/index';
+import { apiGetUserRents, apiRemoveRent } from '../axios/index';
 
 const Profil = (props) => {
   const { rents, session } = props;
@@ -10,16 +10,13 @@ const Profil = (props) => {
   const loginStatus = session.isLoggedIn;
   useEffect(() => {
     if (loginStatus) {
-      axios
-        .get(`http://localhost:3001/users/${id}/rents/`, {
-          withCredentials: true,
-        })
-        .then((response) => {
-          props.addRents(response.data);
-        })
-        .catch((error) => console.log('api errors:', error.response.data));
+      apiGetUserRents(id, props.addRents);
     }
   }, [loginStatus]);
+
+  const handleRentRemove = (id) => {
+    apiRemoveRent(id, props.removeRent);
+  };
   return (
     <div className="container d-flex flex-column mt-5 ">
       <h4>My rented cars</h4>
@@ -27,8 +24,8 @@ const Profil = (props) => {
         <table className="table">
           <thead>
             <tr style={{ fontSize: 12 }}>
+              <th></th>
               <th>Status</th>
-
               <th>Model</th>
               <th>Pick-up date</th>
               <th>Pick-up time</th>
@@ -52,9 +49,14 @@ const Profil = (props) => {
                 <tr key={rent.id}>
                   <td>
                     <div className="text-center">
-                      <a href="#" style={{ color: '#97BF0F' }}>
-                        <i className="fa fa-remove mr-2" />
-                      </a>
+                      <button
+                        className="btn btn-link"
+                        type="button"
+                        onClick={() => handleRentRemove(rent.id)}
+                        style={{ color: '#97BF0F' }}
+                      >
+                        <i className="fa fa-trash-o mr-2" />
+                      </button>
                     </div>
                   </td>
                   <td>{rent.status}</td>
@@ -75,4 +77,4 @@ const Profil = (props) => {
   );
 };
 
-export default connect(mapRentsToProps, { addRents })(Profil);
+export default connect(mapRentsToProps, { addRents, removeRent })(Profil);
