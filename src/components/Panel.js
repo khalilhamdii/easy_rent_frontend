@@ -1,14 +1,25 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { mapRentsToProps } from '../helpers/index';
-import { addRents, removeRent } from '../actions/index';
-import { apiGetRents, apiRemoveRent } from '../axios/index';
+import { addRents, removeRent, changeRentStatus } from '../actions/index';
+import {
+  apiChangeRentStatus,
+  apiGetRents,
+  apiRemoveRent,
+} from '../axios/index';
 const Panel = (props) => {
   const { rents, session } = props;
   const loginStatus = session.isLoggedIn;
 
   const handleRentRemove = (id) => {
     apiRemoveRent(id, props.removeRent);
+  };
+  const handleRentChange = (target, id, rent) => {
+    if (target.name === 'Accept') {
+      apiChangeRentStatus(id, rent, 'Rented', props.changeRentStatus);
+    } else if (target.name === 'Decline') {
+      apiChangeRentStatus(id, rent, 'Refused', props.changeRentStatus);
+    }
   };
   useEffect(() => {
     if (loginStatus) {
@@ -53,18 +64,22 @@ const Panel = (props) => {
                 <td>{rent.returnDate}</td>
                 <td>{rent.location}</td>
                 <td>
-                  {rent.status !== 'Rented' ? (
+                  {rent.status === 'Pending' ? (
                     <>
                       <div className="text-center">
                         <button
+                          onClick={(e) => handleRentChange(e.target, rent.id)}
                           type="button"
+                          name="Accept"
                           className="btn btn-link"
                           style={{ color: '#97BF0F' }}
                         >
                           Accept
                         </button>
                         <button
+                          onClick={(e) => handleRentChange(e.target, rent.id)}
                           type="button"
+                          name="Decline"
                           className="btn btn-link"
                           style={{ color: '#97BF0F' }}
                         >
@@ -83,4 +98,8 @@ const Panel = (props) => {
   );
 };
 
-export default connect(mapRentsToProps, { addRents, removeRent })(Panel);
+export default connect(mapRentsToProps, {
+  addRents,
+  removeRent,
+  changeRentStatus,
+})(Panel);

@@ -1,6 +1,7 @@
 import {
   ADD_RENT,
   ADD_RENTS,
+  CHANGE_RENT_STATUS,
   LOGIN,
   LOGOUT,
   REMOVE_RENT,
@@ -19,6 +20,11 @@ export const addRents = (rents) => ({
 export const removeRent = (id) => ({
   type: REMOVE_RENT,
   payload: { id },
+});
+
+export const changeRentStatus = (id, status) => ({
+  type: CHANGE_RENT_STATUS,
+  payload: { id, status },
 });
 
 export const loginHandler = (data) => ({

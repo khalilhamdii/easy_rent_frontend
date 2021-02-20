@@ -74,6 +74,20 @@ export const apiRemoveRent = (id, action) => {
     .catch((error) => console.log('api errors:', error));
 };
 
+export const apiChangeRentStatus = (id, rent, status, action) => {
+  const modifiedRent = { ...rent, status: status };
+  axios
+    .patch(`http://localhost:3001/rents/${id}`, modifiedRent, {
+      withCredentials: true,
+    })
+    .then((response) => {
+      if (response.data.status === 'updated') {
+        action(id, status);
+      }
+    })
+    .catch((error) => console.log('api errors:', error));
+};
+
 export const apiGetRents = (action) => {
   axios
     .get(`http://localhost:3001/rents/`, {
