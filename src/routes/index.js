@@ -8,7 +8,7 @@ import Home from '../components/Home';
 import SideBar from '../components/SideBar';
 import Login from '../components/Login';
 import Signup from '../components/Signup';
-import Cars from '../containers/cars';
+import Cars from '../containers/Cars';
 import CarDetails from '../components/CarDetails';
 import Profil from '../components/Profil';
 import Panel from '../components/Panel';
