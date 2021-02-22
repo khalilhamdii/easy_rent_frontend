@@ -6,6 +6,7 @@ import { mapSessionToProps } from '../helpers/index';
 import { logoutHandler } from '../actions/index';
 import '../assets/css/sidebar.css';
 import { apiLogOut } from '../axios';
+import logo from '../assets/images/logo.png';
 
 const SideBar = (props) => {
   const { session } = props;
@@ -30,7 +31,7 @@ const SideBar = (props) => {
         style={{ display: !navToggle ? 'block' : 'none' }}
       >
         <div className="mb-5 logo">
-          <span>EasyRent</span>
+          <img src={logo} alt="logo" className="w-100" />
         </div>
         <ul className="list-unstyled">
           <li>

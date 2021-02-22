@@ -22,7 +22,7 @@ const CarForm = (props) => {
         <div className="modal-content">
           <div className="modal-header" style={{ background: '#97BF0F' }}>
             <h4 className="modal-title" style={{ color: 'white' }}>
-              Car rent form
+              Add a new car
             </h4>
             <button
               onClick={handleAddCarClick}
