@@ -4,6 +4,7 @@ import { mapCarsToProps } from '../helpers/index';
 import CarCard from '../components/CarCard';
 import CarForm from '../components/CarForm';
 import { apiAddCar } from '../axios';
+import { addCar } from '../actions/index';
 const Cars = (props) => {
   const [formStatus, setFormStatus] = useState(false);
   const { cars, session } = props;
@@ -26,7 +27,7 @@ const Cars = (props) => {
     formData.append('engine', car.engine);
     formData.append('rentDeposit', car.rentDeposit);
     formData.append('carImg', car.carImg);
-    apiAddCar(formData);
+    apiAddCar(formData, props.addCar);
   };
   return (
     <>
@@ -60,4 +61,4 @@ const Cars = (props) => {
   );
 };
 
-export default connect(mapCarsToProps)(Cars);
+export default connect(mapCarsToProps, { addCar })(Cars);

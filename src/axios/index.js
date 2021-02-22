@@ -123,16 +123,15 @@ export const apiGetCars = (action) => {
     .catch((error) => console.log('api errors:', error.response.data));
 };
 
-export const apiAddCar = (carData) => {
+export const apiAddCar = (carData, action) => {
   axios
     .post(`http://localhost:3001/api/v1/cars`, carData, {
       headers: { 'content-type': 'multipart/form-data' },
       withCredentials: true,
     })
     .then((response) => {
-      if (response.data.status === 'created') {
-        console.log(response.data);
-        // action(car);
+      if (response.statusText === 'Created') {
+        action(response.data);
       }
     })
     .catch((error) => console.log('api errors:', error.response.data));

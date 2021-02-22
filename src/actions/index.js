@@ -1,4 +1,5 @@
 import {
+  ADD_CAR,
   ADD_CARS,
   ADD_RENT,
   ADD_RENTS,
@@ -11,6 +12,11 @@ import {
 export const addCars = (cars) => ({
   type: ADD_CARS,
   payload: { cars },
+});
+
+export const addCar = (car) => ({
+  type: ADD_CAR,
+  payload: { car },
 });
 
 export const addRent = (rent) => ({
