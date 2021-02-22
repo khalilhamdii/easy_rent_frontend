@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
 
 const RentForm = (props) => {
@@ -158,6 +159,17 @@ const RentForm = (props) => {
       </div>
     </div>
   );
+};
+
+RentForm.propTypes = {
+  formStatus: PropTypes.func.isRequired,
+  handleRentClick: PropTypes.func.isRequired,
+  handleAddRent: PropTypes.func.isRequired,
+  uniqModels: PropTypes.arrayOf(PropTypes.string),
+  info: PropTypes.shape({
+    userName: PropTypes.string,
+    model: PropTypes.string,
+  }),
 };
 
 export default RentForm;

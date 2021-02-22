@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 const CarCard = (props) => {
   const { car } = props;
   return (
@@ -24,6 +25,15 @@ const CarCard = (props) => {
       </div>
     </div>
   );
+};
+
+CarCard.propTypes = {
+  car: PropTypes.shape({
+    id: PropTypes.number,
+    model: PropTypes.string,
+    carImg: PropTypes.string,
+    pricePerDay: PropTypes.string,
+  }).isRequired,
 };
 
 export default CarCard;

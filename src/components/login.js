@@ -3,11 +3,13 @@ import { useForm } from 'react-hook-form';
 import { connect } from 'react-redux';
 import { loginHandler } from '../actions/index';
 import { apiLogin } from '../axios';
+import PropTypes from 'prop-types';
 
 const Login = (props) => {
   const { register, errors, handleSubmit } = useForm();
+  const { loginHandler } = props;
   const onSubmit = (user) => {
-    apiLogin(user, props.loginHandler, redirect);
+    apiLogin(user, loginHandler, redirect);
   };
 
   const redirect = () => {
@@ -58,6 +60,10 @@ const Login = (props) => {
       </form>
     </div>
   );
+};
+
+Login.propTypes = {
+  logintHandler: PropTypes.func.isRequired,
 };
 
 export default connect(null, { loginHandler })(Login);

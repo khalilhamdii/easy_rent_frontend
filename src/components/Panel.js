@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { mapRentsToProps } from '../helpers/index';
 import { addRents, removeRent, changeRentStatus } from '../actions/index';
@@ -8,22 +9,22 @@ import {
   apiRemoveRent,
 } from '../axios/index';
 const Panel = (props) => {
-  const { rents, session } = props;
+  const { rents, session, addRents, removeRent, changeRentStatus } = props;
   const loginStatus = session.isLoggedIn;
 
   const handleRentRemove = (id) => {
-    apiRemoveRent(id, props.removeRent);
+    apiRemoveRent(id, removeRent);
   };
   const handleRentChange = (target, id, rent) => {
     if (target.name === 'Accept') {
-      apiChangeRentStatus(id, rent, 'Rented', props.changeRentStatus);
+      apiChangeRentStatus(id, rent, 'Rented', changeRentStatus);
     } else if (target.name === 'Decline') {
-      apiChangeRentStatus(id, rent, 'Refused', props.changeRentStatus);
+      apiChangeRentStatus(id, rent, 'Refused', changeRentStatus);
     }
   };
   useEffect(() => {
     if (loginStatus) {
-      apiGetRents(props.addRents);
+      apiGetRents(addRents);
     }
   }, [loginStatus]);
   return (
@@ -96,6 +97,31 @@ const Panel = (props) => {
       </div>
     </div>
   );
+};
+
+Panel.propTypes = {
+  session: PropTypes.shape({
+    isLoggedIn: PropTypes.bool,
+    user: PropTypes.shape({
+      id: PropTypes.number,
+      userName: PropTypes.string,
+      role: PropTypes.string,
+    }),
+  }).isRequired,
+  rents: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      model: PropTypes.string,
+      userName: PropTypes.string,
+      pickUpDate: PropTypes.string,
+      returnDate: PropTypes.string,
+      location: PropTypes.string,
+      status: PropTypes.string,
+    })
+  ).isRequired,
+  addRents: PropTypes.func.isRequired,
+  removeRent: PropTypes.func.isRequired,
+  changeRentStatus: PropTypes.func.isRequired,
 };
 
 export default connect(mapRentsToProps, {

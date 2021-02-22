@@ -5,9 +5,10 @@ import CarCard from '../components/CarCard';
 import CarForm from '../components/CarForm';
 import { apiAddCar } from '../axios';
 import { addCar } from '../actions/index';
+import PropTypes from 'prop-types';
 const Cars = (props) => {
   const [formStatus, setFormStatus] = useState(false);
-  const { cars, session } = props;
+  const { cars, session, addCar } = props;
   const handleAddCarClick = () => {
     setFormStatus(!formStatus);
   };
@@ -27,7 +28,7 @@ const Cars = (props) => {
     formData.append('engine', car.engine);
     formData.append('rentDeposit', car.rentDeposit);
     formData.append('carImg', car.carImg);
-    apiAddCar(formData, props.addCar);
+    apiAddCar(formData, addCar);
   };
   return (
     <>
@@ -59,6 +60,34 @@ const Cars = (props) => {
       />
     </>
   );
+};
+
+Cars.propTypes = {
+  session: PropTypes.shape({
+    isLoggedIn: PropTypes.bool,
+    user: PropTypes.shape({
+      id: PropTypes.number,
+      userName: PropTypes.string,
+      role: PropTypes.string,
+    }),
+  }).isRequired,
+  cars: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      model: PropTypes.string,
+      color: PropTypes.string,
+      doors: PropTypes.string,
+      luggages: PropTypes.string,
+      seats: PropTypes.string,
+      emissionsClass: PropTypes.string,
+      transmission: PropTypes.string,
+      engine: PropTypes.string,
+      rentDeposit: PropTypes.string,
+      pricePerDay: PropTypes.string,
+      carImg: PropTypes.string,
+    })
+  ).isRequired,
+  addCar: PropTypes.func.isRequired,
 };
 
 export default connect(mapCarsToProps, { addCar })(Cars);

@@ -4,13 +4,15 @@ import { useForm } from 'react-hook-form';
 import { connect } from 'react-redux';
 import { loginHandler } from '../actions/index';
 import { apiSignUp } from '../axios';
+import PropTypes from 'prop-types';
 
 const Signup = (props) => {
+  const { loginHandler } = props;
   const { register, errors, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
     const user = { ...data, role: 'USER' };
-    apiSignUp(user, props.loginHandler, redirect);
+    apiSignUp(user, loginHandler, redirect);
   };
 
   const redirect = () => {
@@ -92,6 +94,10 @@ const Signup = (props) => {
       </form>
     </div>
   );
+};
+
+Signup.propTypes = {
+  logintHandler: PropTypes.func.isRequired,
 };
 
 export default connect(null, { loginHandler })(Signup);

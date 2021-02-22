@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import PropTypes from 'prop-types';
 
 const CarForm = (props) => {
   const { formStatus, handleAddCarClick, handleAddCar } = props;
@@ -289,4 +290,9 @@ const CarForm = (props) => {
   );
 };
 
+CarForm.propTypes = {
+  formStatus: PropTypes.func.isRequired,
+  handleAddCarClick: PropTypes.func.isRequired,
+  handleAddCar: PropTypes.func.isRequired,
+};
 export default CarForm;

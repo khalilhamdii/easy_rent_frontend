@@ -1,21 +1,22 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { mapRentsToProps, differenceInDays } from '../helpers';
 import { addRents, removeRent } from '../actions/index';
 import { apiGetUserRents, apiRemoveRent } from '../axios/index';
 
 const Profil = (props) => {
-  const { rents, session } = props;
+  const { rents, session, addRents, removeRent } = props;
   const { id } = session.user;
   const loginStatus = session.isLoggedIn;
   useEffect(() => {
     if (loginStatus) {
-      apiGetUserRents(id, props.addRents);
+      apiGetUserRents(id, addRents);
     }
   }, [loginStatus]);
 
   const handleRentRemove = (id) => {
-    apiRemoveRent(id, props.removeRent);
+    apiRemoveRent(id, removeRent);
   };
   return (
     <div className="container d-flex flex-column mt-5 ">
@@ -75,6 +76,30 @@ const Profil = (props) => {
       </div>
     </div>
   );
+};
+
+Profil.propTypes = {
+  session: PropTypes.shape({
+    isLoggedIn: PropTypes.bool,
+    user: PropTypes.shape({
+      id: PropTypes.number,
+      userName: PropTypes.string,
+      role: PropTypes.string,
+    }),
+  }).isRequired,
+  rents: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      model: PropTypes.string,
+      pickUpDate: PropTypes.string,
+      pickUpTime: PropTypes.string,
+      returnDate: PropTypes.string,
+      pickUpTime: PropTypes.string,
+      status: PropTypes.string,
+    })
+  ).isRequired,
+  addRents: PropTypes.func.isRequired,
+  removeRent: PropTypes.func.isRequired,
 };
 
 export default connect(mapRentsToProps, { addRents, removeRent })(Profil);

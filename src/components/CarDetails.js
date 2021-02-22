@@ -6,10 +6,11 @@ import { Link } from 'react-router-dom';
 import { mapCarsToProps } from '../helpers';
 import { addRent, removeCar } from '../actions/index';
 import { apiAddRent, apiRemoveCar } from '../axios';
+import PropTypes from 'prop-types';
 
 const CarDetails = (props) => {
   const [formStatus, setFormStatus] = useState(false);
-  const { cars, addRent, session } = props;
+  const { cars, addRent, session, removeCar } = props;
   const {
     match: {
       params: { id },
@@ -39,7 +40,7 @@ const CarDetails = (props) => {
   };
 
   const handleRemoveCar = (id) => {
-    apiRemoveCar(id, props.removeCar);
+    apiRemoveCar(id, removeCar);
   };
 
   const RentButton = () => (
@@ -184,6 +185,35 @@ const CarDetails = (props) => {
       />
     </>
   );
+};
+
+CarDetails.propTypes = {
+  session: PropTypes.shape({
+    isLoggedIn: PropTypes.bool,
+    user: PropTypes.shape({
+      id: PropTypes.number,
+      userName: PropTypes.string,
+      role: PropTypes.string,
+    }),
+  }).isRequired,
+  cars: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      model: PropTypes.string,
+      color: PropTypes.string,
+      doors: PropTypes.string,
+      luggages: PropTypes.string,
+      seats: PropTypes.string,
+      emissionsClass: PropTypes.string,
+      transmission: PropTypes.string,
+      engine: PropTypes.string,
+      rentDeposit: PropTypes.string,
+      pricePerDay: PropTypes.string,
+      carImg: PropTypes.string,
+    })
+  ).isRequired,
+  removeCar: PropTypes.func.isRequired,
+  addRent: PropTypes.func.isRequired,
 };
 
 export default connect(mapCarsToProps, { addRent, removeCar })(CarDetails);

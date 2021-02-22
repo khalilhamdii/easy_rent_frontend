@@ -7,6 +7,7 @@ import { logoutHandler } from '../actions/index';
 import '../assets/css/sidebar.css';
 import { apiLogOut } from '../axios';
 import logo from '../assets/images/logo.png';
+import PropTypes from 'prop-types';
 
 const SideBar = (props) => {
   const { session } = props;
@@ -125,6 +126,18 @@ const SideBar = (props) => {
       </nav>
     </>
   );
+};
+
+SideBar.propTypes = {
+  session: PropTypes.shape({
+    isLoggedIn: PropTypes.bool,
+    user: PropTypes.shape({
+      id: PropTypes.number,
+      userName: PropTypes.string,
+      role: PropTypes.string,
+    }),
+  }).isRequired,
+  logoutHandler: PropTypes.func.isRequired,
 };
 
 export default connect(mapSessionToProps, { logoutHandler })(SideBar);
