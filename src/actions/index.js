@@ -1,4 +1,5 @@
 import {
+  ADD_CARS,
   ADD_RENT,
   ADD_RENTS,
   CHANGE_RENT_STATUS,
@@ -6,6 +7,11 @@ import {
   LOGOUT,
   REMOVE_RENT,
 } from '../constants/index';
+
+export const addCars = (cars) => ({
+  type: ADD_CARS,
+  payload: { cars },
+});
 
 export const addRent = (rent) => ({
   type: ADD_RENT,

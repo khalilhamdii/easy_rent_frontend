@@ -109,3 +109,31 @@ export const apiGetUserRents = (id, action) => {
     })
     .catch((error) => console.log('api errors:', error.response.data));
 };
+
+export const apiGetCars = (action) => {
+  axios
+    .get(`http://localhost:3001/api/v1/cars`, {
+      withCredentials: true,
+    })
+    .then((response) => {
+      if (response.status === 200) {
+        action(response.data);
+      }
+    })
+    .catch((error) => console.log('api errors:', error.response.data));
+};
+
+export const apiAddCar = (carData) => {
+  axios
+    .post(`http://localhost:3001/api/v1/cars`, carData, {
+      headers: { 'content-type': 'multipart/form-data' },
+      withCredentials: true,
+    })
+    .then((response) => {
+      if (response.data.status === 'created') {
+        console.log(response.data);
+        // action(car);
+      }
+    })
+    .catch((error) => console.log('api errors:', error.response.data));
+};

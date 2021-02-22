@@ -5,7 +5,6 @@ const CarForm = (props) => {
   const { formStatus, handleAddCarClick, handleAddCar } = props;
   const { register, errors, handleSubmit } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
     handleAddCar(data);
     handleAddCarClick();
   };
@@ -178,7 +177,7 @@ const CarForm = (props) => {
                   EMISSION CLASS:
                 </label>
                 <input
-                  name="emissionClass"
+                  name="emissionsClass"
                   type="text"
                   ref={register({
                     required: true,
@@ -187,9 +186,10 @@ const CarForm = (props) => {
                   className="form-control"
                   placeholder="Please enter the emission class type..."
                 />
-                {errors.emissionClass && errors.seats.type === 'required' && (
-                  <span className="text-danger">This is required</span>
-                )}
+                {errors.emissionsClass &&
+                  errors.emissionsClass.type === 'required' && (
+                    <span className="text-danger">This is required</span>
+                  )}
               </div>
               <div className="form-group col-6">
                 <label className="text-muted" style={{ fontWeight: 'bold' }}>
@@ -258,11 +258,11 @@ const CarForm = (props) => {
                     required: true,
                   })}
                   className="form-control"
+                  accept="image/*"
                 />
-                {errors.rentDeposit &&
-                  errors.rentDeposit.type === 'required' && (
-                    <span className="text-danger">This is required</span>
-                  )}
+                {errors.carImg && errors.carImg.type === 'required' && (
+                  <span className="text-danger">This is required</span>
+                )}
               </div>
               <div className="col-12 text-right">
                 <button

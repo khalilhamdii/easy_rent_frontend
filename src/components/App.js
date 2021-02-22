@@ -4,9 +4,9 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import rootReducer from '../reducers/index';
 import Routes from '../routes/index';
-import initial_state from '../initial_state/index';
+// import initial_state from '../initial_state/index';
 
-const store = createStore(rootReducer, initial_state);
+const store = createStore(rootReducer);
 const App = () => (
   <React.StrictMode>
     <Provider store={store}>

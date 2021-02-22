@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 // import PropTypes from 'prop-types';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { loginHandler, logoutHandler } from '../actions/index';
+import { loginHandler, logoutHandler, addCars } from '../actions/index';
 import Home from '../components/Home';
 import SideBar from '../components/SideBar';
 import Login from '../components/Login';
@@ -12,11 +12,12 @@ import Cars from '../containers/Cars';
 import CarDetails from '../components/CarDetails';
 import Profil from '../components/Profil';
 import Panel from '../components/Panel';
-import { apiGetLoginStatus } from '../axios';
+import { apiGetLoginStatus, apiGetCars } from '../axios';
 
 const Routes = (props) => {
   useEffect(() => {
     apiGetLoginStatus(props.loginHandler, props.logoutHandler);
+    apiGetCars(props.addCars);
   }, []);
   return (
     <BrowserRouter>
@@ -41,4 +42,4 @@ const Routes = (props) => {
   );
 };
 
-export default connect(null, { loginHandler, logoutHandler })(Routes);
+export default connect(null, { loginHandler, logoutHandler, addCars })(Routes);
