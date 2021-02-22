@@ -4,8 +4,8 @@ import '../assets/css/cardetails.css';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { mapCarsToProps } from '../helpers';
-import { addRent } from '../actions/index';
-import { apiAddRent } from '../axios';
+import { addRent, removeCar } from '../actions/index';
+import { apiAddRent, apiRemoveCar } from '../axios';
 
 const CarDetails = (props) => {
   const [formStatus, setFormStatus] = useState(false);
@@ -38,6 +38,10 @@ const CarDetails = (props) => {
     apiAddRent(rent, user_id, addRent);
   };
 
+  const handleRemoveCar = (id) => {
+    apiRemoveCar(id, props.removeCar);
+  };
+
   const RentButton = () => (
     <button
       onClick={handleRentClick}
@@ -56,6 +60,28 @@ const CarDetails = (props) => {
         Login
       </Link>
     </>
+  );
+
+  const ConfigBtns = () => (
+    <div className="my-2">
+      <button
+        onClick={handleRentClick}
+        className="btn  rounded-pill  btn-customized"
+        type="button"
+      >
+        <i className="fa fa-cog mr-2" />
+        Edit car
+      </button>
+      <Link
+        to="/cars"
+        onClick={() => handleRemoveCar(car.id)}
+        className="btn ml-4 rounded-pill   btn-customized"
+        type="button"
+      >
+        <i className="fa fa-trash mr-2" />
+        Delete car
+      </Link>
+    </div>
   );
   return (
     <>
@@ -133,7 +159,13 @@ const CarDetails = (props) => {
                   </tbody>
                 </table>
               </div>
-              {session.isLoggedIn ? <RentButton /> : <LoginLink />}
+              {session.isLoggedIn && session.user.role === 'USER' ? (
+                <RentButton />
+              ) : session.isLoggedIn && session.user.role === 'ADMIN' ? (
+                <ConfigBtns />
+              ) : (
+                <LoginLink />
+              )}
             </div>
           </div>
         </div>
@@ -154,4 +186,4 @@ const CarDetails = (props) => {
   );
 };
 
-export default connect(mapCarsToProps, { addRent })(CarDetails);
+export default connect(mapCarsToProps, { addRent, removeCar })(CarDetails);

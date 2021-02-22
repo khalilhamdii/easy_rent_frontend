@@ -136,3 +136,16 @@ export const apiAddCar = (carData, action) => {
     })
     .catch((error) => console.log('api errors:', error.response.data));
 };
+
+export const apiRemoveCar = (id, action) => {
+  axios
+    .delete(`http://localhost:3001/api/v1/cars/${id}`, {
+      withCredentials: true,
+    })
+    .then((response) => {
+      if (response.data.status === 'deleted') {
+        action(id);
+      }
+    })
+    .catch((error) => console.log('api errors:', error));
+};
