@@ -63,7 +63,7 @@ const Login = (props) => {
 };
 
 Login.propTypes = {
-  logintHandler: PropTypes.func.isRequired,
+  logintHandler: PropTypes.func,
 };
 
 export default connect(null, { loginHandler })(Login);

@@ -291,7 +291,7 @@ const CarForm = (props) => {
 };
 
 CarForm.propTypes = {
-  formStatus: PropTypes.func.isRequired,
+  formStatus: PropTypes.bool.isRequired,
   handleAddCarClick: PropTypes.func.isRequired,
   handleAddCar: PropTypes.func.isRequired,
 };

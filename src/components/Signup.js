@@ -97,7 +97,7 @@ const Signup = (props) => {
 };
 
 Signup.propTypes = {
-  logintHandler: PropTypes.func.isRequired,
+  logintHandler: PropTypes.func,
 };
 
 export default connect(null, { loginHandler })(Signup);

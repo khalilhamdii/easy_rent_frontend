@@ -162,7 +162,7 @@ const RentForm = (props) => {
 };
 
 RentForm.propTypes = {
-  formStatus: PropTypes.func.isRequired,
+  formStatus: PropTypes.bool.isRequired,
   handleRentClick: PropTypes.func.isRequired,
   handleAddRent: PropTypes.func.isRequired,
   uniqModels: PropTypes.arrayOf(PropTypes.string),
