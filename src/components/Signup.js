@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { connect } from 'react-redux';
@@ -9,10 +9,17 @@ import PropTypes from 'prop-types';
 const Signup = (props) => {
   const { loginHandler } = props;
   const { register, errors, handleSubmit } = useForm();
-
+  const [apiErrors, setErrors] = useState([]);
+  const renderErrors = () => (
+    <ul className="text-danger">
+      {apiErrors.map((error) => (
+        <li key={error}>{error}</li>
+      ))}
+    </ul>
+  );
   const onSubmit = (data) => {
     const user = { ...data, role: 'USER' };
-    apiSignUp(user, loginHandler, redirect);
+    apiSignUp(user, loginHandler, redirect, setErrors);
   };
 
   const redirect = () => {
@@ -31,13 +38,14 @@ const Signup = (props) => {
         <h4 className="my-4" style={{ textAlign: 'center' }}>
           Create a new account
         </h4>
+        {apiErrors.length > 0 ? renderErrors() : null}
         <div className="form-group">
           <input
             className="form-control"
             type="text"
             name="userName"
             placeholder="Username"
-            ref={register({ required: true, minLength: 3 })}
+            ref={register({ required: true })}
           />
           {errors.userName && errors.userName.type === 'required' && (
             <span className="text-danger">This is required</span>

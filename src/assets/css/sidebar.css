@@ -22,7 +22,7 @@
   padding-bottom: 0px;
 }
 
-ul {
+.sidebar ul {
   font-size: 15px;
   font-weight: bold;
   padding: 20px 0px;
@@ -30,16 +30,16 @@ ul {
   border-bottom: 1px solid #dfe8ee;
 }
 
-ul li a {
+.sidebar ul li a {
   display: block;
   padding: 10px 20px;
   border: 0;
   color: var(--dark);
 }
 
-ul li a:hover,
-ul li a:focus,
-ul li a.active {
+.sidebar ul li a:hover,
+.sidebar ul li a:focus,
+.sidebar ul li a.active {
   color: white;
   background-color: #97bf0f;
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { connect } from 'react-redux';
 import { loginHandler } from '../actions/index';
@@ -7,11 +7,20 @@ import PropTypes from 'prop-types';
 
 const Login = (props) => {
   const { register, errors, handleSubmit } = useForm();
-  const { loginHandler } = props;
-  const onSubmit = (user) => {
-    apiLogin(user, loginHandler, redirect);
-  };
 
+  const { loginHandler } = props;
+
+  const [apiErrors, setErrors] = useState([]);
+  const renderErrors = () => (
+    <ul className="text-danger">
+      {apiErrors.map((error) => (
+        <li key={error}>{error}</li>
+      ))}
+    </ul>
+  );
+  const onSubmit = (user) => {
+    apiLogin(user, loginHandler, redirect, setErrors);
+  };
   const redirect = () => {
     props.history.push('/');
   };
@@ -28,6 +37,7 @@ const Login = (props) => {
         <h1 className="my-4" style={{ textAlign: 'center' }}>
           Login
         </h1>
+        {apiErrors.length > 0 ? renderErrors() : null}
         <div className="form-group">
           <input
             className="form-control"
@@ -48,7 +58,7 @@ const Login = (props) => {
             placeholder="Password"
             ref={register({ required: true })}
           />
-          {errors.email && errors.email.type === 'required' && (
+          {errors.password && errors.password.type === 'required' && (
             <span className="text-danger">This is required</span>
           )}
         </div>

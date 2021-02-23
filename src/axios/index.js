@@ -1,24 +1,28 @@
 import axios from 'axios';
 
-export const apiLogin = (user, action, redirect) => {
+export const apiLogin = (user, action, redirect, setErrors) => {
   axios
     .post('http://localhost:3001/login', { user }, { withCredentials: true })
     .then((response) => {
       if (response.data.logged_in) {
         action(response.data);
         redirect();
+      } else {
+        setErrors(response.data.errors);
       }
     })
     .catch((error) => console.log('api errors:', error.response.data));
 };
 
-export const apiSignUp = (user, action, redirect) => {
+export const apiSignUp = (user, action, redirect, setErrors) => {
   axios
     .post('http://localhost:3001/users', { user }, { withCredentials: true })
     .then((response) => {
       if (response.data.status === 'created') {
         action(response.data);
         redirect();
+      } else {
+        setErrors(response.data.errors);
       }
     })
     .catch((error) => console.log('api errors:', error.response.data));
