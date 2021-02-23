@@ -1,13 +1,13 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
-const CarForm = (props) => {
-  const { formStatus, handleAddCarClick, handleAddCar } = props;
+const CarEditForm = (props) => {
+  const { editFormStatus, handleEditCarClick, handleEditCar, car } = props;
   const { register, errors, handleSubmit } = useForm();
   const onSubmit = (data) => {
-    handleAddCar(data);
-    handleAddCarClick();
+    handleEditCar(data);
+    handleEditCarClick();
   };
   return (
     <div
@@ -15,7 +15,7 @@ const CarForm = (props) => {
       role="dialog"
       tabIndex={-1}
       style={{
-        display: formStatus ? 'block' : 'none',
+        display: editFormStatus ? 'block' : 'none',
         backgroundColor: 'rgba(0, 0, 0, 0.4)',
       }}
     >
@@ -26,7 +26,7 @@ const CarForm = (props) => {
               Add a new car
             </h4>
             <button
-              onClick={handleAddCarClick}
+              onClick={handleEditCarClick}
               type="button"
               className="close"
               data-dismiss="modal"
@@ -54,6 +54,7 @@ const CarForm = (props) => {
                   className="form-control"
                   type="text"
                   placeholder="Please enter car model"
+                  defaultValue={car.model}
                 />
                 {errors.model && errors.model.type === 'required' && (
                   <span className="text-danger">This is required</span>
@@ -67,6 +68,7 @@ const CarForm = (props) => {
                   COLOR:
                 </label>
                 <input
+                  defaultValue={car.color}
                   name="color"
                   ref={register({
                     required: true,
@@ -86,6 +88,7 @@ const CarForm = (props) => {
                   BODY STYLE:
                 </label>
                 <input
+                  defaultValue={car.bodyStyle}
                   name="bodyStyle"
                   ref={register({
                     required: true,
@@ -105,6 +108,7 @@ const CarForm = (props) => {
                   PRICE PER DAY:
                 </label>
                 <input
+                  defaultValue={car.pricePerDay}
                   name="pricePerDay"
                   type="number"
                   ref={register({
@@ -124,6 +128,7 @@ const CarForm = (props) => {
                   DOORS:
                 </label>
                 <input
+                  defaultValue={car.doors}
                   name="doors"
                   type="number"
                   ref={register({
@@ -142,6 +147,7 @@ const CarForm = (props) => {
                   LUGGAGES:
                 </label>
                 <input
+                  defaultValue={car.luggages}
                   name="luggages"
                   type="number"
                   ref={register({
@@ -160,6 +166,7 @@ const CarForm = (props) => {
                   SEATS:
                 </label>
                 <input
+                  defaultValue={car.seats}
                   name="seats"
                   type="number"
                   ref={register({
@@ -178,6 +185,7 @@ const CarForm = (props) => {
                   EMISSION CLASS:
                 </label>
                 <input
+                  defaultValue={car.emissionsClass}
                   name="emissionsClass"
                   type="text"
                   ref={register({
@@ -197,6 +205,7 @@ const CarForm = (props) => {
                   TRANSMISSION:
                 </label>
                 <input
+                  defaultValue={car.transmission}
                   name="transmission"
                   type="text"
                   ref={register({
@@ -216,6 +225,7 @@ const CarForm = (props) => {
                   ENGINE:
                 </label>
                 <input
+                  defaultValue={car.engine}
                   name="engine"
                   type="text"
                   ref={register({
@@ -234,6 +244,7 @@ const CarForm = (props) => {
                   RENT DEPOSIT:
                 </label>
                 <input
+                  defaultValue={car.rentDeposit}
                   name="rentDeposit"
                   type="number"
                   ref={register({
@@ -267,7 +278,7 @@ const CarForm = (props) => {
               </div>
               <div className="col-12 text-right">
                 <button
-                  onClick={handleAddCarClick}
+                  onClick={handleEditCarClick}
                   className="btn btn-light mr-4"
                   type="button"
                   data-dismiss="modal"
@@ -286,9 +297,9 @@ const CarForm = (props) => {
   );
 };
 
-CarForm.propTypes = {
-  formStatus: PropTypes.bool.isRequired,
-  handleAddCarClick: PropTypes.func.isRequired,
-  handleAddCar: PropTypes.func.isRequired,
-};
-export default CarForm;
+// CarEditForm.propTypes = {
+//   editFormStatus: PropTypes.bool.isRequired,
+//   handleEditCarClick: PropTypes.func.isRequired,
+//   handleAddCar: PropTypes.func.isRequired,
+// };
+export default CarEditForm;

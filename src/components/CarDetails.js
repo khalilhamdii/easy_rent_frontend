@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import RentForm from './RentForm';
+import CarEditForm from './CarEditForm';
 import '../assets/css/cardetails.css';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { mapCarsToProps } from '../helpers';
-import { addRent, removeCar } from '../actions/index';
-import { apiAddRent, apiRemoveCar } from '../axios';
+import { addRent, editCar, removeCar } from '../actions/index';
+import { apiAddRent, apiRemoveCar, apiEditCar } from '../axios';
 import PropTypes from 'prop-types';
 
 const CarDetails = (props) => {
   const [formStatus, setFormStatus] = useState(false);
-  const { cars, addRent, session, removeCar } = props;
+  const [editFormStatus, setEditFormStatus] = useState(false);
+  const { cars, addRent, session, editCar, removeCar } = props;
   const {
     match: {
       params: { id },
@@ -29,7 +31,27 @@ const CarDetails = (props) => {
   const handleRentClick = () => {
     setFormStatus(!formStatus);
   };
+  const handleEditCarClick = () => {
+    setEditFormStatus(!editFormStatus);
+  };
 
+  const handleEditCar = (data) => {
+    const car = { ...data, carImg: data.carImg[0] };
+    const formData = new FormData();
+    formData.append('model', car.model);
+    formData.append('color', car.color);
+    formData.append('bodyStyle', car.bodyStyle);
+    formData.append('pricePerDay', car.pricePerDay);
+    formData.append('doors', car.doors);
+    formData.append('luggages', car.luggages);
+    formData.append('seats', car.seats);
+    formData.append('emissionsClass', car.emissionsClass);
+    formData.append('transmission', car.transmission);
+    formData.append('engine', car.engine);
+    formData.append('rentDeposit', car.rentDeposit);
+    formData.append('carImg', car.carImg);
+    apiEditCar(id, formData, editCar);
+  };
   const handleAddRent = (data) => {
     const rent = {
       ...data,
@@ -66,7 +88,7 @@ const CarDetails = (props) => {
   const ConfigBtns = () => (
     <div className="my-2">
       <button
-        onClick={handleRentClick}
+        onClick={handleEditCarClick}
         className="btn  rounded-pill  btn-customized"
         type="button"
       >
@@ -183,6 +205,12 @@ const CarDetails = (props) => {
         uniqModels={uniqModels}
         info={info}
       />
+      <CarEditForm
+        editFormStatus={editFormStatus}
+        handleEditCarClick={handleEditCarClick}
+        handleEditCar={handleEditCar}
+        car={car}
+      />
     </>
   );
 };
@@ -212,8 +240,11 @@ CarDetails.propTypes = {
       carImg: PropTypes.string,
     })
   ).isRequired,
+  editCar: PropTypes.func.isRequired,
   removeCar: PropTypes.func.isRequired,
   addRent: PropTypes.func.isRequired,
 };
 
-export default connect(mapCarsToProps, { addRent, removeCar })(CarDetails);
+export default connect(mapCarsToProps, { addRent, editCar, removeCar })(
+  CarDetails
+);

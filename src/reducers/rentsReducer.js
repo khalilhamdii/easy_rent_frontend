@@ -27,7 +27,6 @@ const rentsReducer = (state = initialState, action) => {
         }
         return rent;
       });
-      console.log(action.payload.status);
       return {
         ...state,
         rents: newRents,

@@ -24,7 +24,7 @@ const SideBar = (props) => {
 
   return (
     <>
-      <a onClick={handleNavToggle}>
+      <a onClick={handleNavToggle} style={{ cursor: 'pointer' }}>
         <i className="fa fa-bars show-icon"></i>
       </a>
       <nav
@@ -32,7 +32,9 @@ const SideBar = (props) => {
         style={{ display: !navToggle ? 'block' : 'none' }}
       >
         <div className="mb-5 logo">
-          <img src={logo} alt="logo" className="w-100" />
+          <Link to="/">
+            <img src={logo} alt="logo" className="w-100" />
+          </Link>
         </div>
         <ul className="list-unstyled">
           <li>

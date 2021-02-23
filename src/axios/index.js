@@ -153,3 +153,16 @@ export const apiRemoveCar = (id, action) => {
     })
     .catch((error) => console.log('api errors:', error));
 };
+
+export const apiEditCar = (id, carData, action) => {
+  axios
+    .patch(`http://localhost:3001/api/v1/cars/${id}`, carData, {
+      withCredentials: true,
+    })
+    .then((response) => {
+      if (response.statusText === 'Accepted') {
+        action(response.data);
+      }
+    })
+    .catch((error) => console.log('api errors:', error));
+};

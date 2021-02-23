@@ -138,21 +138,19 @@ const RentForm = (props) => {
                   <option value="Location 3">Location 3</option>
                 </select>
               </div>
-              <button
-                onClick={handleRentClick}
-                className="btn btn-light"
-                type="button"
-                data-dismiss="modal"
-              >
-                Close
-              </button>
-              <button
-                className="btn btn-primary"
-                type="submit"
-                style={{ background: '#97BF0F', borderStyle: 'none' }}
-              >
-                Submit
-              </button>
+              <div className="col-12 text-right">
+                <button
+                  onClick={handleRentClick}
+                  className="btn btn-light mr-4"
+                  type="button"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button className="btn btn-customized" type="submit">
+                  Submit
+                </button>
+              </div>
             </form>
           </div>
         </div>

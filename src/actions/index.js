@@ -7,6 +7,7 @@ import {
   LOGIN,
   LOGOUT,
   REMOVE_CAR,
+  EDIT_CAR,
   REMOVE_RENT,
 } from '../constants/index';
 
@@ -23,6 +24,11 @@ export const addCar = (car) => ({
 export const removeCar = (id) => ({
   type: REMOVE_CAR,
   payload: { id },
+});
+
+export const editCar = (car) => ({
+  type: EDIT_CAR,
+  payload: { car },
 });
 
 export const addRent = (rent) => ({
