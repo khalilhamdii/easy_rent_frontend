@@ -109,7 +109,7 @@ const CarForm = (props) => {
                   type="number"
                   ref={register({
                     required: true,
-                    minL: 5,
+                    min: 5,
                   })}
                   className="form-control"
                   placeholder="Please enter car price per day..."
@@ -128,7 +128,7 @@ const CarForm = (props) => {
                   type="number"
                   ref={register({
                     required: true,
-                    minL: 5,
+                    min: 2,
                   })}
                   className="form-control"
                   placeholder="Please enter the number of doors..."
@@ -146,7 +146,7 @@ const CarForm = (props) => {
                   type="number"
                   ref={register({
                     required: true,
-                    minL: 5,
+                    min: 0,
                   })}
                   className="form-control"
                   placeholder="Please enter the number of luggages..."
@@ -164,7 +164,7 @@ const CarForm = (props) => {
                   type="number"
                   ref={register({
                     required: true,
-                    minL: 5,
+                    min: 2,
                   })}
                   className="form-control"
                   placeholder="Please enter the number of seats..."
@@ -182,7 +182,8 @@ const CarForm = (props) => {
                   type="text"
                   ref={register({
                     required: true,
-                    minL: 5,
+                    maxLength: 20,
+                    minLength: 4,
                   })}
                   className="form-control"
                   placeholder="Please enter the emission class type..."
@@ -201,7 +202,8 @@ const CarForm = (props) => {
                   type="text"
                   ref={register({
                     required: true,
-                    minL: 5,
+                    maxLength: 20,
+                    minLength: 4,
                   })}
                   className="form-control"
                   placeholder="Please enter transmission type..."
@@ -220,7 +222,8 @@ const CarForm = (props) => {
                   type="text"
                   ref={register({
                     required: true,
-                    minL: 5,
+                    maxLength: 20,
+                    minLength: 4,
                   })}
                   className="form-control"
                   placeholder="Please enter engine type..."
@@ -238,7 +241,7 @@ const CarForm = (props) => {
                   type="number"
                   ref={register({
                     required: true,
-                    minL: 5,
+                    min: 50,
                   })}
                   className="form-control"
                   placeholder="Please enter the rent deposit amount..."

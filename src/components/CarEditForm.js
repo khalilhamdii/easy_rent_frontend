@@ -56,12 +56,6 @@ const CarEditForm = (props) => {
                   placeholder="Please enter car model"
                   defaultValue={car.model}
                 />
-                {errors.model && errors.model.type === 'required' && (
-                  <span className="text-danger">This is required</span>
-                )}
-                {errors.model && errors.model.type === 'minLength' && (
-                  <span className="text-danger">Minimum Length is 4</span>
-                )}
               </div>
               <div className="form-group col-6">
                 <label className="text-muted" style={{ fontWeight: 'bold' }}>
@@ -73,15 +67,12 @@ const CarEditForm = (props) => {
                   ref={register({
                     required: true,
                     maxLength: 10,
-                    minLength: 2,
+                    minLength: 3,
                   })}
                   className="form-control"
                   type="text"
                   placeholder="Please enter car color..."
                 />
-                {errors.color && errors.color.type === 'required' && (
-                  <span className="text-danger">This is required</span>
-                )}
               </div>
               <div className="form-group col-6">
                 <label className="text-muted" style={{ fontWeight: 'bold' }}>
@@ -92,16 +83,13 @@ const CarEditForm = (props) => {
                   name="bodyStyle"
                   ref={register({
                     required: true,
-                    maxLength: 10,
-                    minLength: 2,
+                    maxLength: 20,
+                    minLength: 4,
                   })}
                   className="form-control"
                   type="text"
                   placeholder="Please enter car body style..."
                 />
-                {errors.bodyStyle && errors.bodyStyle.type === 'required' && (
-                  <span className="text-danger">This is required</span>
-                )}
               </div>
               <div className="form-group col-6">
                 <label className="text-muted" style={{ fontWeight: 'bold' }}>
@@ -113,15 +101,11 @@ const CarEditForm = (props) => {
                   type="number"
                   ref={register({
                     required: true,
-                    minL: 5,
+                    min: 5,
                   })}
                   className="form-control"
                   placeholder="Please enter car price per day..."
                 />
-                {errors.pricePerDay &&
-                  errors.pricePerDay.type === 'required' && (
-                    <span className="text-danger">This is required</span>
-                  )}
               </div>
               <div className="form-group col-6">
                 <label className="text-muted" style={{ fontWeight: 'bold' }}>
@@ -133,14 +117,11 @@ const CarEditForm = (props) => {
                   type="number"
                   ref={register({
                     required: true,
-                    minL: 5,
+                    min: 2,
                   })}
                   className="form-control"
                   placeholder="Please enter the number of doors..."
                 />
-                {errors.doors && errors.doors.type === 'required' && (
-                  <span className="text-danger">This is required</span>
-                )}
               </div>
               <div className="form-group col-6">
                 <label className="text-muted" style={{ fontWeight: 'bold' }}>
@@ -152,14 +133,11 @@ const CarEditForm = (props) => {
                   type="number"
                   ref={register({
                     required: true,
-                    minL: 5,
+                    min: 0,
                   })}
                   className="form-control"
                   placeholder="Please enter the number of luggages..."
                 />
-                {errors.luggages && errors.luggages.type === 'required' && (
-                  <span className="text-danger">This is required</span>
-                )}
               </div>
               <div className="form-group col-6">
                 <label className="text-muted" style={{ fontWeight: 'bold' }}>
@@ -171,14 +149,11 @@ const CarEditForm = (props) => {
                   type="number"
                   ref={register({
                     required: true,
-                    minL: 5,
+                    min: 2,
                   })}
                   className="form-control"
                   placeholder="Please enter the number of seats..."
                 />
-                {errors.seats && errors.seats.type === 'required' && (
-                  <span className="text-danger">This is required</span>
-                )}
               </div>
               <div className="form-group col-6">
                 <label className="text-muted" style={{ fontWeight: 'bold' }}>
@@ -190,15 +165,12 @@ const CarEditForm = (props) => {
                   type="text"
                   ref={register({
                     required: true,
-                    minL: 5,
+                    maxLength: 20,
+                    minLength: 4,
                   })}
                   className="form-control"
                   placeholder="Please enter the emission class type..."
                 />
-                {errors.emissionsClass &&
-                  errors.emissionsClass.type === 'required' && (
-                    <span className="text-danger">This is required</span>
-                  )}
               </div>
               <div className="form-group col-6">
                 <label className="text-muted" style={{ fontWeight: 'bold' }}>
@@ -210,15 +182,12 @@ const CarEditForm = (props) => {
                   type="text"
                   ref={register({
                     required: true,
-                    minL: 5,
+                    maxLength: 20,
+                    minLength: 4,
                   })}
                   className="form-control"
                   placeholder="Please enter transmission type..."
                 />
-                {errors.transmission &&
-                  errors.transmission.type === 'required' && (
-                    <span className="text-danger">This is required</span>
-                  )}
               </div>
               <div className="form-group col-6">
                 <label className="text-muted" style={{ fontWeight: 'bold' }}>
@@ -230,14 +199,12 @@ const CarEditForm = (props) => {
                   type="text"
                   ref={register({
                     required: true,
-                    minL: 5,
+                    maxLength: 20,
+                    minLength: 4,
                   })}
                   className="form-control"
                   placeholder="Please enter engine type..."
                 />
-                {errors.engine && errors.engine.type === 'required' && (
-                  <span className="text-danger">This is required</span>
-                )}
               </div>
               <div className="form-group col-6">
                 <label className="text-muted" style={{ fontWeight: 'bold' }}>
@@ -249,15 +216,11 @@ const CarEditForm = (props) => {
                   type="number"
                   ref={register({
                     required: true,
-                    minL: 5,
+                    min: 50,
                   })}
                   className="form-control"
                   placeholder="Please enter the rent deposit amount..."
                 />
-                {errors.rentDeposit &&
-                  errors.rentDeposit.type === 'required' && (
-                    <span className="text-danger">This is required</span>
-                  )}
               </div>
               <div className="form-group col-6">
                 <label className="text-muted" style={{ fontWeight: 'bold' }}>
@@ -272,9 +235,6 @@ const CarEditForm = (props) => {
                   className="form-control"
                   accept="image/*"
                 />
-                {errors.carImg && errors.carImg.type === 'required' && (
-                  <span className="text-danger">This is required</span>
-                )}
               </div>
               <div className="col-12 text-right">
                 <button
