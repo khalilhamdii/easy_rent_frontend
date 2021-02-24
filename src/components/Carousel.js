@@ -4,6 +4,9 @@ import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 import '../assets/css/carousel.css';
 import CarouselCard from './CarouselCard';
+import { connect } from 'react-redux';
+import { mapCarsToProps } from '../helpers/index';
+import PropTypes from 'prop-types';
 
 const LeftArrow = (props) => {
   const { className, style, onClick } = props;
@@ -19,7 +22,9 @@ const RightArrow = (props) => {
   );
 };
 
-const Carousel = () => {
+const Carousel = (props) => {
+  const { cars } = props;
+  const latestCars = cars.slice(0, 6);
   const settings = {
     dots: true,
     infinite: true,
@@ -32,14 +37,30 @@ const Carousel = () => {
   };
   return (
     <Slider style={{ width: '90%' }} {...settings}>
-      <CarouselCard />
-      <CarouselCard />
-      <CarouselCard />
-      <CarouselCard />
-      <CarouselCard />
-      <CarouselCard />
+      {latestCars.map((car) => (
+        <CarouselCard key={car.id} car={car} />
+      ))}
     </Slider>
   );
 };
 
-export default Carousel;
+Carousel.propTypes = {
+  cars: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      model: PropTypes.string,
+      color: PropTypes.string,
+      doors: PropTypes.string,
+      luggages: PropTypes.string,
+      seats: PropTypes.string,
+      emissionsClass: PropTypes.string,
+      transmission: PropTypes.string,
+      engine: PropTypes.string,
+      rentDeposit: PropTypes.string,
+      pricePerDay: PropTypes.string,
+      carImg: PropTypes.string,
+    })
+  ).isRequired,
+};
+
+export default connect(mapCarsToProps)(Carousel);
