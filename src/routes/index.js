@@ -1,8 +1,7 @@
-/* eslint-disable arrow-parens */
 import React, { useEffect } from 'react';
-// import PropTypes from 'prop-types';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { loginHandler, logoutHandler, addCars } from '../actions/index';
 import Home from '../components/Home';
 import SideBar from '../components/SideBar';
@@ -14,10 +13,11 @@ import Profil from '../components/Profil';
 import Panel from '../components/Panel';
 import { apiGetLoginStatus, apiGetCars } from '../axios';
 
-const Routes = (props) => {
+const Routes = props => {
+  const { loginHandler, logoutHandler, addCars } = props;
   useEffect(() => {
-    apiGetLoginStatus(props.loginHandler, props.logoutHandler);
-    apiGetCars(props.addCars);
+    apiGetLoginStatus(loginHandler, logoutHandler);
+    apiGetCars(addCars);
   }, []);
   return (
     <BrowserRouter>
@@ -40,6 +40,12 @@ const Routes = (props) => {
       </div>
     </BrowserRouter>
   );
+};
+
+Routes.propTypes = {
+  loginHandler: PropTypes.func.isRequired,
+  logoutHandler: PropTypes.func.isRequired,
+  addCars: PropTypes.func.isRequired,
 };
 
 export default connect(null, { loginHandler, logoutHandler, addCars })(Routes);

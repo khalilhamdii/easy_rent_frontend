@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-const CarCard = (props) => {
+
+const CarCard = props => {
   const { car } = props;
   return (
     <div className="col-sm-6 col-md-4 col-lg-3 mt-4">
@@ -31,6 +32,7 @@ CarCard.propTypes = {
   car: PropTypes.shape({
     id: PropTypes.number,
     model: PropTypes.string,
+    color: PropTypes.string,
     carImg: PropTypes.string,
     pricePerDay: PropTypes.string,
   }).isRequired,

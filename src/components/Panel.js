@@ -8,11 +8,14 @@ import {
   apiGetRents,
   apiRemoveRent,
 } from '../axios/index';
-const Panel = (props) => {
-  const { rents, session, addRents, removeRent, changeRentStatus } = props;
+
+const Panel = props => {
+  const {
+    rents, session, addRents, removeRent, changeRentStatus,
+  } = props;
   const loginStatus = session.isLoggedIn;
 
-  const handleRentRemove = (id) => {
+  const handleRentRemove = id => {
     apiRemoveRent(id, removeRent);
   };
   const handleRentChange = (target, id, rent) => {
@@ -34,7 +37,7 @@ const Panel = (props) => {
         <table className="table text-center">
           <thead>
             <tr>
-              <th></th>
+              <th />
               <th>Status</th>
               <th>Name</th>
               <th>Model</th>
@@ -44,7 +47,7 @@ const Panel = (props) => {
             </tr>
           </thead>
           <tbody>
-            {rents.map((rent) => (
+            {rents.map(rent => (
               <tr key={rent.id}>
                 <td>
                   <div className="text-center">
@@ -69,7 +72,7 @@ const Panel = (props) => {
                     <>
                       <div className="text-center">
                         <button
-                          onClick={(e) => handleRentChange(e.target, rent.id)}
+                          onClick={e => handleRentChange(e.target, rent.id)}
                           type="button"
                           name="Accept"
                           className="btn btn-link"
@@ -78,7 +81,7 @@ const Panel = (props) => {
                           Accept
                         </button>
                         <button
-                          onClick={(e) => handleRentChange(e.target, rent.id)}
+                          onClick={e => handleRentChange(e.target, rent.id)}
                           type="button"
                           name="Decline"
                           className="btn btn-link"
@@ -117,7 +120,7 @@ Panel.propTypes = {
       returnDate: PropTypes.string,
       location: PropTypes.string,
       status: PropTypes.string,
-    })
+    }),
   ).isRequired,
   addRents: PropTypes.func.isRequired,
   removeRent: PropTypes.func.isRequired,

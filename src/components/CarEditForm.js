@@ -1,11 +1,13 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
-const CarEditForm = (props) => {
-  const { editFormStatus, handleEditCarClick, handleEditCar, car } = props;
-  const { register, errors, handleSubmit } = useForm();
-  const onSubmit = (data) => {
+const CarEditForm = props => {
+  const {
+    editFormStatus, handleEditCarClick, handleEditCar, car,
+  } = props;
+  const { register, handleSubmit } = useForm();
+  const onSubmit = data => {
     handleEditCar(data);
     handleEditCarClick();
   };
@@ -257,9 +259,24 @@ const CarEditForm = (props) => {
   );
 };
 
-// CarEditForm.propTypes = {
-//   editFormStatus: PropTypes.bool.isRequired,
-//   handleEditCarClick: PropTypes.func.isRequired,
-//   handleAddCar: PropTypes.func.isRequired,
-// };
+CarEditForm.propTypes = {
+  car: PropTypes.shape({
+    id: PropTypes.number,
+    model: PropTypes.string,
+    color: PropTypes.string,
+    bodyStyle: PropTypes.string,
+    doors: PropTypes.string,
+    luggages: PropTypes.string,
+    seats: PropTypes.string,
+    emissionsClass: PropTypes.string,
+    transmission: PropTypes.string,
+    engine: PropTypes.string,
+    rentDeposit: PropTypes.string,
+    pricePerDay: PropTypes.string,
+    carImg: PropTypes.string,
+  }).isRequired,
+  editFormStatus: PropTypes.bool.isRequired,
+  handleEditCarClick: PropTypes.func.isRequired,
+  handleEditCar: PropTypes.func.isRequired,
+};
 export default CarEditForm;

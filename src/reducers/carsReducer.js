@@ -1,4 +1,6 @@
-import { ADD_CAR, ADD_CARS, REMOVE_CAR, EDIT_CAR } from '../constants/index';
+import {
+  ADD_CAR, ADD_CARS, REMOVE_CAR, EDIT_CAR,
+} from '../constants/index';
 
 const initialState = {
   cars: [],
@@ -12,13 +14,13 @@ const carsReducer = (state = initialState, action) => {
     case REMOVE_CAR: {
       return {
         ...state,
-        cars: state.cars.filter((car) => car.id !== action.payload.id),
+        cars: state.cars.filter(car => car.id !== action.payload.id),
       };
     }
     case EDIT_CAR: {
-      const newCars = state.cars.map((car) => {
+      const newCars = state.cars.map(car => {
         if (car.id === action.payload.car.id) {
-          car = action.payload.car;
+          return action.payload.car;
         }
         return car;
       });

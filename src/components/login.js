@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { connect } from 'react-redux';
+import ReactRouterPropTypes from 'react-router-prop-types';
+import PropTypes from 'prop-types';
 import { loginHandler } from '../actions/index';
 import { apiLogin } from '../axios';
-import PropTypes from 'prop-types';
 
-const Login = (props) => {
+const Login = props => {
+  const redirect = () => {
+    props.history.push('/');
+  };
   const { register, errors, handleSubmit } = useForm();
 
   const { loginHandler } = props;
@@ -13,16 +17,13 @@ const Login = (props) => {
   const [apiErrors, setErrors] = useState([]);
   const renderErrors = () => (
     <ul className="text-danger">
-      {apiErrors.map((error) => (
+      {apiErrors.map(error => (
         <li key={error}>{error}</li>
       ))}
     </ul>
   );
-  const onSubmit = (user) => {
+  const onSubmit = user => {
     apiLogin(user, loginHandler, redirect, setErrors);
-  };
-  const redirect = () => {
-    props.history.push('/');
   };
 
   return (
@@ -32,7 +33,7 @@ const Login = (props) => {
           <i
             className="icon ion-ios-navigate"
             style={{ color: '#97BF0F', fontSize: '90px' }}
-          ></i>
+          />
         </div>
         <h1 className="my-4" style={{ textAlign: 'center' }}>
           Login
@@ -73,7 +74,8 @@ const Login = (props) => {
 };
 
 Login.propTypes = {
-  logintHandler: PropTypes.func,
+  loginHandler: PropTypes.func.isRequired,
+  history: ReactRouterPropTypes.history.isRequired,
 };
 
 export default connect(null, { loginHandler })(Login);

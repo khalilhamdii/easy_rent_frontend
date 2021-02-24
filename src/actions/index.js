@@ -11,37 +11,37 @@ import {
   REMOVE_RENT,
 } from '../constants/index';
 
-export const addCars = (cars) => ({
+export const addCars = cars => ({
   type: ADD_CARS,
   payload: { cars },
 });
 
-export const addCar = (car) => ({
+export const addCar = car => ({
   type: ADD_CAR,
   payload: { car },
 });
 
-export const removeCar = (id) => ({
+export const removeCar = id => ({
   type: REMOVE_CAR,
   payload: { id },
 });
 
-export const editCar = (car) => ({
+export const editCar = car => ({
   type: EDIT_CAR,
   payload: { car },
 });
 
-export const addRent = (rent) => ({
+export const addRent = rent => ({
   type: ADD_RENT,
   payload: { rent },
 });
 
-export const addRents = (rents) => ({
+export const addRents = rents => ({
   type: ADD_RENTS,
   payload: { rents },
 });
 
-export const removeRent = (id) => ({
+export const removeRent = id => ({
   type: REMOVE_RENT,
   payload: { id },
 });
@@ -51,7 +51,7 @@ export const changeRentStatus = (id, status) => ({
   payload: { id, status },
 });
 
-export const loginHandler = (data) => ({
+export const loginHandler = data => ({
   type: LOGIN,
   payload: {
     isLoggedIn: true,

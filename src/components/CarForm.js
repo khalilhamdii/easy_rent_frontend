@@ -2,10 +2,10 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import PropTypes from 'prop-types';
 
-const CarForm = (props) => {
+const CarForm = props => {
   const { formStatus, handleAddCarClick, handleAddCar } = props;
   const { register, errors, handleSubmit } = useForm();
-  const onSubmit = (data) => {
+  const onSubmit = data => {
     handleAddCar(data);
     handleAddCarClick();
   };
@@ -114,10 +114,10 @@ const CarForm = (props) => {
                   className="form-control"
                   placeholder="Please enter car price per day..."
                 />
-                {errors.pricePerDay &&
-                  errors.pricePerDay.type === 'required' && (
+                {errors.pricePerDay
+                  && errors.pricePerDay.type === 'required' && (
                     <span className="text-danger">This is required</span>
-                  )}
+                )}
               </div>
               <div className="form-group col-6">
                 <label className="text-muted" style={{ fontWeight: 'bold' }}>
@@ -188,10 +188,10 @@ const CarForm = (props) => {
                   className="form-control"
                   placeholder="Please enter the emission class type..."
                 />
-                {errors.emissionsClass &&
-                  errors.emissionsClass.type === 'required' && (
+                {errors.emissionsClass
+                  && errors.emissionsClass.type === 'required' && (
                     <span className="text-danger">This is required</span>
-                  )}
+                )}
               </div>
               <div className="form-group col-6">
                 <label className="text-muted" style={{ fontWeight: 'bold' }}>
@@ -208,10 +208,10 @@ const CarForm = (props) => {
                   className="form-control"
                   placeholder="Please enter transmission type..."
                 />
-                {errors.transmission &&
-                  errors.transmission.type === 'required' && (
+                {errors.transmission
+                  && errors.transmission.type === 'required' && (
                     <span className="text-danger">This is required</span>
-                  )}
+                )}
               </div>
               <div className="form-group col-6">
                 <label className="text-muted" style={{ fontWeight: 'bold' }}>
@@ -246,10 +246,10 @@ const CarForm = (props) => {
                   className="form-control"
                   placeholder="Please enter the rent deposit amount..."
                 />
-                {errors.rentDeposit &&
-                  errors.rentDeposit.type === 'required' && (
+                {errors.rentDeposit
+                  && errors.rentDeposit.type === 'required' && (
                     <span className="text-danger">This is required</span>
-                  )}
+                )}
               </div>
               <div className="form-group col-6">
                 <label className="text-muted" style={{ fontWeight: 'bold' }}>

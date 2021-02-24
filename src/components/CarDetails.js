@@ -1,33 +1,35 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import RentForm from './RentForm';
 import CarEditForm from './CarEditForm';
 import '../assets/css/cardetails.css';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { mapCarsToProps } from '../helpers';
 import { addRent, editCar, removeCar } from '../actions/index';
 import { apiAddRent, apiRemoveCar, apiEditCar } from '../axios';
-import PropTypes from 'prop-types';
 
-const CarDetails = (props) => {
+const CarDetails = props => {
   const [formStatus, setFormStatus] = useState(false);
   const [editFormStatus, setEditFormStatus] = useState(false);
-  const { cars, addRent, session, editCar, removeCar } = props;
+  const {
+    cars, addRent, session, editCar, removeCar,
+  } = props;
   const {
     match: {
       params: { id },
     },
   } = props;
-  const car = cars.filter((car) => car.id === parseInt(id))[0];
-  const models = cars.map((car) => car.model);
+  const car = cars.filter(car => car.id === parseInt(id, 10))[0];
+  const models = cars.map(car => car.model);
   const uniqModels = models.filter(
-    (item, index) => models.indexOf(item) === index
+    (item, index) => models.indexOf(item) === index,
   );
   const info = {
     userName: session.user.userName,
     model: car.model,
   };
-  const user_id = session.user.id;
+  const userId = session.user.id;
   const handleRentClick = () => {
     setFormStatus(!formStatus);
   };
@@ -35,7 +37,7 @@ const CarDetails = (props) => {
     setEditFormStatus(!editFormStatus);
   };
 
-  const handleEditCar = (data) => {
+  const handleEditCar = data => {
     const car = { ...data, carImg: data.carImg[0] };
     const formData = new FormData();
     formData.append('model', car.model);
@@ -52,16 +54,16 @@ const CarDetails = (props) => {
     formData.append('carImg', car.carImg);
     apiEditCar(id, formData, editCar);
   };
-  const handleAddRent = (data) => {
+  const handleAddRent = data => {
     const rent = {
       ...data,
       pricePerDay: car.pricePerDay,
       status: 'Pending',
     };
-    apiAddRent(rent, user_id, addRent);
+    apiAddRent(rent, userId, addRent);
   };
 
-  const handleRemoveCar = (id) => {
+  const handleRemoveCar = id => {
     apiRemoveCar(id, removeCar);
   };
 
@@ -114,7 +116,8 @@ const CarDetails = (props) => {
           <br />
         </h5>
         <h6 className="text-muted" style={{ textAlign: 'right' }}>
-          {car.pricePerDay}$/Day
+          {car.pricePerDay}
+          $/Day
           <br />
         </h6>
         <div className="d-flex justify-content-between mt-2 ">
@@ -177,7 +180,10 @@ const CarDetails = (props) => {
                     </tr>
                     <tr>
                       <td>RENT DEPOSIT</td>
-                      <td>{car.rentDeposit}$</td>
+                      <td>
+                        {car.rentDeposit}
+                        $
+                      </td>
                     </tr>
                   </tbody>
                 </table>
@@ -238,13 +244,15 @@ CarDetails.propTypes = {
       rentDeposit: PropTypes.string,
       pricePerDay: PropTypes.string,
       carImg: PropTypes.string,
-    })
+    }),
   ).isRequired,
+  match: PropTypes.shape({ params: PropTypes.shape({ id: PropTypes.string }) })
+    .isRequired,
   editCar: PropTypes.func.isRequired,
   removeCar: PropTypes.func.isRequired,
   addRent: PropTypes.func.isRequired,
 };
 
 export default connect(mapCarsToProps, { addRent, editCar, removeCar })(
-  CarDetails
+  CarDetails,
 );

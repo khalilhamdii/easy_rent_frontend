@@ -5,8 +5,10 @@ import { mapRentsToProps, differenceInDays } from '../helpers';
 import { addRents, removeRent } from '../actions/index';
 import { apiGetUserRents, apiRemoveRent } from '../axios/index';
 
-const Profil = (props) => {
-  const { rents, session, addRents, removeRent } = props;
+const Profil = props => {
+  const {
+    rents, session, addRents, removeRent,
+  } = props;
   const { id } = session.user;
   const loginStatus = session.isLoggedIn;
   useEffect(() => {
@@ -15,7 +17,7 @@ const Profil = (props) => {
     }
   }, [loginStatus]);
 
-  const handleRentRemove = (id) => {
+  const handleRentRemove = id => {
     apiRemoveRent(id, removeRent);
   };
   return (
@@ -25,7 +27,7 @@ const Profil = (props) => {
         <table className="table">
           <thead>
             <tr style={{ fontSize: 12 }}>
-              <th></th>
+              <th />
               <th>Status</th>
               <th>Model</th>
               <th>Pick-up date</th>
@@ -37,15 +39,14 @@ const Profil = (props) => {
             </tr>
           </thead>
           <tbody style={{ fontSize: 11 }}>
-            {rents.map((rent) => {
+            {rents.map(rent => {
               const duration = differenceInDays(
                 rent.pickUpDate,
                 rent.pickUpTime,
                 rent.returnDate,
-                rent.returnTime
+                rent.returnTime,
               );
-              const totalPrice =
-                parseInt(duration) * parseInt(rent.pricePerDay);
+              const totalPrice = parseInt(duration, 10) * parseInt(rent.pricePerDay, 10);
               return (
                 <tr key={rent.id}>
                   <td>
@@ -66,8 +67,15 @@ const Profil = (props) => {
                   <td>{rent.pickUpTime}</td>
                   <td>{rent.returnDate}</td>
                   <td>{rent.returnTime}</td>
-                  <td>{duration} days</td>
-                  <td>{totalPrice}$</td>
+                  <td>
+                    {duration}
+                    {' '}
+                    days
+                  </td>
+                  <td>
+                    {totalPrice}
+                    $
+                  </td>
                 </tr>
               );
             })}
@@ -94,9 +102,9 @@ Profil.propTypes = {
       pickUpDate: PropTypes.string,
       pickUpTime: PropTypes.string,
       returnDate: PropTypes.string,
-      pickUpTime: PropTypes.string,
+      returnTime: PropTypes.string,
       status: PropTypes.string,
-    })
+    }),
   ).isRequired,
   addRents: PropTypes.func.isRequired,
   removeRent: PropTypes.func.isRequired,

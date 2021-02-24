@@ -1,29 +1,32 @@
 import React, { useState } from 'react';
+import ReactRouterPropTypes from 'react-router-prop-types';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { connect } from 'react-redux';
+
+import PropTypes from 'prop-types';
 import { loginHandler } from '../actions/index';
 import { apiSignUp } from '../axios';
-import PropTypes from 'prop-types';
 
-const Signup = (props) => {
+const Signup = props => {
   const { loginHandler } = props;
   const { register, errors, handleSubmit } = useForm();
   const [apiErrors, setErrors] = useState([]);
   const renderErrors = () => (
     <ul className="text-danger">
-      {apiErrors.map((error) => (
+      {apiErrors.map(error => (
         <li key={error}>{error}</li>
       ))}
     </ul>
   );
-  const onSubmit = (data) => {
-    const user = { ...data, role: 'USER' };
-    apiSignUp(user, loginHandler, redirect, setErrors);
-  };
 
   const redirect = () => {
     props.history.push('/');
+  };
+
+  const onSubmit = data => {
+    const user = { ...data, role: 'USER' };
+    apiSignUp(user, loginHandler, redirect, setErrors);
   };
 
   return (
@@ -83,10 +86,10 @@ const Signup = (props) => {
             placeholder="Re-enter Password"
             ref={register({ required: true })}
           />
-          {errors.password_confirmation &&
-            errors.password_confirmation.type === 'required' && (
+          {errors.password_confirmation
+            && errors.password_confirmation.type === 'required' && (
               <span className="text-danger">This is required</span>
-            )}
+          )}
         </div>
         <div className="form-group">
           <button className="btn btn-customized btn-block" type="submit">
@@ -105,7 +108,8 @@ const Signup = (props) => {
 };
 
 Signup.propTypes = {
-  logintHandler: PropTypes.func,
+  loginHandler: PropTypes.func.isRequired,
+  history: ReactRouterPropTypes.history.isRequired,
 };
 
 export default connect(null, { loginHandler })(Signup);

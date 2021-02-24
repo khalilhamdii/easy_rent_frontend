@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
 
-const RentForm = (props) => {
+const RentForm = props => {
   const {
     formStatus,
     handleRentClick,
@@ -11,7 +11,7 @@ const RentForm = (props) => {
     info,
   } = props;
   const { register, errors, handleSubmit } = useForm();
-  const onSubmit = (data) => {
+  const onSubmit = data => {
     handleAddRent(data);
     handleRentClick();
   };
@@ -69,10 +69,10 @@ const RentForm = (props) => {
                   defaultValue={info.model}
                   ref={register({ required: true })}
                 >
-                  <option key={'defaultModel'} value="defaultModel" disabled>
+                  <option key="defaultModel" value="defaultModel" disabled>
                     Select car model
                   </option>
-                  {uniqModels.map((model) => (
+                  {uniqModels.map(model => (
                     <option key={model} value={model}>
                       {model}
                     </option>
@@ -162,11 +162,11 @@ RentForm.propTypes = {
   formStatus: PropTypes.bool.isRequired,
   handleRentClick: PropTypes.func.isRequired,
   handleAddRent: PropTypes.func.isRequired,
-  uniqModels: PropTypes.arrayOf(PropTypes.string),
+  uniqModels: PropTypes.arrayOf(PropTypes.string).isRequired,
   info: PropTypes.shape({
     userName: PropTypes.string,
     model: PropTypes.string,
-  }),
+  }).isRequired,
 };
 
 export default RentForm;

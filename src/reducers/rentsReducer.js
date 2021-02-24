@@ -17,13 +17,14 @@ const rentsReducer = (state = initialState, action) => {
     case REMOVE_RENT: {
       return {
         ...state,
-        rents: state.rents.filter((rent) => rent.id !== action.payload.id),
+        rents: state.rents.filter(rent => rent.id !== action.payload.id),
       };
     }
     case CHANGE_RENT_STATUS: {
-      const newRents = state.rents.map((rent) => {
+      const newRents = state.rents.map(rent => {
         if (rent.id === action.payload.id) {
-          rent.status = action.payload.status;
+          const editedRent = { ...rent, status: action.payload.status };
+          return editedRent;
         }
         return rent;
       });

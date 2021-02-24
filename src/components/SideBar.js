@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { mapSessionToProps } from '../helpers/index';
 import { logoutHandler } from '../actions/index';
 import '../assets/css/sidebar.css';
 import { apiLogOut } from '../axios';
 import logo from '../assets/images/logo.png';
-import PropTypes from 'prop-types';
 
-const SideBar = (props) => {
+const SideBar = props => {
   const { session } = props;
   const location = useLocation().pathname;
   const [navToggle, setNavToggle] = useState(false);
@@ -24,9 +23,14 @@ const SideBar = (props) => {
 
   return (
     <>
-      <a onClick={handleNavToggle} style={{ cursor: 'pointer' }}>
-        <i className="fa fa-bars show-icon"></i>
-      </a>
+      <button
+        onClick={handleNavToggle}
+        style={{ cursor: 'pointer' }}
+        aria-hidden="true"
+        type="button"
+      >
+        <i className="fa fa-bars show-icon" />
+      </button>
       <nav
         className="col-2 sidebar flex-grow-1"
         style={{ display: !navToggle ? 'block' : 'none' }}
@@ -111,16 +115,16 @@ const SideBar = (props) => {
             style={{ paddingTop: '0px', paddingBottom: '0px' }}
           >
             <a href="/">
-              <i className="icon ion-social-twitter"></i>
+              <i className="icon ion-social-twitter" />
             </a>
             <a href="/">
-              <i className="icon ion-social-facebook"></i>
+              <i className="icon ion-social-facebook" />
             </a>
             <a href="/">
-              <i className="icon ion-social-snapchat"></i>
+              <i className="icon ion-social-snapchat" />
             </a>
             <a href="/">
-              <i className="icon ion-social-youtube"></i>
+              <i className="icon ion-social-youtube" />
             </a>
           </div>
           <span style={{ fontSize: '12px' }}>2021 Khalil Hamdi</span>
