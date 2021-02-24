@@ -25,7 +25,8 @@ const SideBar = props => {
     <>
       <button
         onClick={handleNavToggle}
-        style={{ cursor: 'pointer' }}
+        className="btn btn-link"
+        style={{ cursor: 'pointer', position: 'absolute' }}
         aria-hidden="true"
         type="button"
       >

@@ -1,0 +1,268 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshots renders App correctly 1`] = `null`;
+
+exports[`Snapshots renders Cars correctly 1`] = `null`;
+
+exports[`Snapshots renders Home correctly 1`] = `
+<div
+  className=" container text-center d-flex flex-column align-items-center justify-content-center min-vh-100"
+>
+  <h4
+    style={
+      Object {
+        "fontWeight": "bold",
+      }
+    }
+  >
+    LATEST MODELS
+  </h4>
+  <h6
+    className="text-muted"
+  >
+    Please select a car model
+  </h6>
+  <div
+    className="slick-slider slick-initialized"
+  >
+    
+    <div
+      className="slick-list"
+    >
+      <div
+        className="slick-track"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseOver={[Function]}
+        style={
+          Object {
+            "WebkitTransform": "translate3d(0px, 0px, 0px)",
+            "WebkitTransition": "",
+            "msTransform": "translateX(0px)",
+            "opacity": 1,
+            "transform": "translate3d(0px, 0px, 0px)",
+            "transition": "",
+          }
+        }
+      >
+        <div
+          aria-hidden={false}
+          className="slick-slide slick-active slick-current"
+          data-index={0}
+          onClick={[Function]}
+          style={
+            Object {
+              "outline": "none",
+              "width": 0,
+            }
+          }
+          tabIndex="-1"
+        >
+          <div>
+            <div
+              className="card mx-2"
+              style={
+                Object {
+                  "borderStyle": "none",
+                }
+              }
+            >
+              <img
+                alt="Kia Rio"
+                className="card-img-top w-100 d-block"
+                src="1.jpeg"
+              />
+              <div
+                className="card-body"
+                style={
+                  Object {
+                    "padding": "0px",
+                  }
+                }
+              >
+                <h4
+                  className="card-title"
+                  style={
+                    Object {
+                      "fontSize": "14px",
+                    }
+                  }
+                >
+                  <a
+                    href="/cars/1"
+                    onClick={[Function]}
+                    style={
+                      Object {
+                        "color": "#97BF0F",
+                      }
+                    }
+                  >
+                    Kia Rio
+                  </a>
+                </h4>
+                <p
+                  className="text-muted"
+                  style={
+                    Object {
+                      "fontSize": "12px",
+                    }
+                  }
+                >
+                  White, Sedan, luggages: 3, Automatic, Euro 6
+                  <br />
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          aria-hidden={false}
+          className="slick-slide slick-active"
+          data-index={1}
+          onClick={[Function]}
+          style={
+            Object {
+              "outline": "none",
+              "width": 0,
+            }
+          }
+          tabIndex="-1"
+        >
+          <div>
+            <div
+              className="card mx-2"
+              style={
+                Object {
+                  "borderStyle": "none",
+                }
+              }
+            >
+              <img
+                alt="Kia Rio"
+                className="card-img-top w-100 d-block"
+                src="1.jpeg"
+              />
+              <div
+                className="card-body"
+                style={
+                  Object {
+                    "padding": "0px",
+                  }
+                }
+              >
+                <h4
+                  className="card-title"
+                  style={
+                    Object {
+                      "fontSize": "14px",
+                    }
+                  }
+                >
+                  <a
+                    href="/cars/2"
+                    onClick={[Function]}
+                    style={
+                      Object {
+                        "color": "#97BF0F",
+                      }
+                    }
+                  >
+                    Kia Rio
+                  </a>
+                </h4>
+                <p
+                  className="text-muted"
+                  style={
+                    Object {
+                      "fontSize": "12px",
+                    }
+                  }
+                >
+                  White, Sedan, luggages: 3, Automatic, Euro 6
+                  <br />
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          aria-hidden={false}
+          className="slick-slide slick-active"
+          data-index={2}
+          onClick={[Function]}
+          style={
+            Object {
+              "outline": "none",
+              "width": 0,
+            }
+          }
+          tabIndex="-1"
+        >
+          <div>
+            <div
+              className="card mx-2"
+              style={
+                Object {
+                  "borderStyle": "none",
+                }
+              }
+            >
+              <img
+                alt="Kia Rio"
+                className="card-img-top w-100 d-block"
+                src="1.jpeg"
+              />
+              <div
+                className="card-body"
+                style={
+                  Object {
+                    "padding": "0px",
+                  }
+                }
+              >
+                <h4
+                  className="card-title"
+                  style={
+                    Object {
+                      "fontSize": "14px",
+                    }
+                  }
+                >
+                  <a
+                    href="/cars/3"
+                    onClick={[Function]}
+                    style={
+                      Object {
+                        "color": "#97BF0F",
+                      }
+                    }
+                  >
+                    Kia Rio
+                  </a>
+                </h4>
+                <p
+                  className="text-muted"
+                  style={
+                    Object {
+                      "fontSize": "12px",
+                    }
+                  }
+                >
+                  White, Sedan, luggages: 3, Automatic, Euro 6
+                  <br />
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+  </div>
+</div>
+`;
+
+exports[`Snapshots renders Profil correctly 1`] = `null`;
+
+exports[`Snapshots renders SideBar correctly 1`] = `null`;

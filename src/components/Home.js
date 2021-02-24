@@ -1,7 +1,5 @@
 import React from 'react';
 import Carousel from './Carousel';
-// import { Link } from 'react-router-dom';
-// import styled from 'styled-components';
 
 const Home = () => (
   <div className=" container text-center d-flex flex-column align-items-center justify-content-center min-vh-100">

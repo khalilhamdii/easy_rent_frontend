@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { loginHandler, logoutHandler, addCars } from '../actions/index';
+import { mapSessionToProps } from '../helpers/index';
 import Home from '../components/Home';
 import SideBar from '../components/SideBar';
 import Login from '../components/Login';
@@ -14,9 +15,13 @@ import Panel from '../components/Panel';
 import { apiGetLoginStatus, apiGetCars } from '../axios';
 
 const Routes = props => {
-  const { loginHandler, logoutHandler, addCars } = props;
+  const {
+    loginHandler, logoutHandler, addCars, session,
+  } = props;
   useEffect(() => {
-    apiGetLoginStatus(loginHandler, logoutHandler);
+    if (!session.isLoggedIn) {
+      apiGetLoginStatus(loginHandler, logoutHandler);
+    }
     apiGetCars(addCars);
   }, []);
   return (
@@ -43,9 +48,21 @@ const Routes = props => {
 };
 
 Routes.propTypes = {
+  session: PropTypes.shape({
+    isLoggedIn: PropTypes.bool,
+    user: PropTypes.shape({
+      id: PropTypes.number,
+      userName: PropTypes.string,
+      role: PropTypes.string,
+    }),
+  }).isRequired,
   loginHandler: PropTypes.func.isRequired,
   logoutHandler: PropTypes.func.isRequired,
   addCars: PropTypes.func.isRequired,
 };
 
-export default connect(null, { loginHandler, logoutHandler, addCars })(Routes);
+export default connect(mapSessionToProps, {
+  loginHandler,
+  logoutHandler,
+  addCars,
+})(Routes);

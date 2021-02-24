@@ -1,4 +1,3 @@
-/* eslint-disable arrow-parens */
 import React from 'react';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';

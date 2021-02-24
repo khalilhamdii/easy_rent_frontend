@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { connect } from 'react-redux';
@@ -75,7 +76,7 @@ const Login = props => {
 
 Login.propTypes = {
   loginHandler: PropTypes.func.isRequired,
-  history: ReactRouterPropTypes.history.isRequired,
+  history: ReactRouterPropTypes.history,
 };
 
 export default connect(null, { loginHandler })(Login);

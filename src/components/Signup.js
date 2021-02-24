@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import React, { useState } from 'react';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { Link } from 'react-router-dom';
@@ -109,7 +110,7 @@ const Signup = props => {
 
 Signup.propTypes = {
   loginHandler: PropTypes.func.isRequired,
-  history: ReactRouterPropTypes.history.isRequired,
+  history: ReactRouterPropTypes.history,
 };
 
 export default connect(null, { loginHandler })(Signup);
