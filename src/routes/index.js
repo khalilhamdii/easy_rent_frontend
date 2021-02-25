@@ -15,13 +15,9 @@ import Panel from '../components/Panel';
 import { apiGetLoginStatus, apiGetCars } from '../axios';
 
 const Routes = props => {
-  const {
-    loginHandler, logoutHandler, addCars, session,
-  } = props;
+  const { loginHandler, logoutHandler, addCars } = props;
   useEffect(() => {
-    if (!session.isLoggedIn) {
-      apiGetLoginStatus(loginHandler, logoutHandler);
-    }
+    apiGetLoginStatus(loginHandler, logoutHandler);
     apiGetCars(addCars);
   }, []);
   return (
