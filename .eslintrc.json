@@ -22,8 +22,7 @@
     "arrow-parens": ["error", "as-needed"],
     "no-nested-ternary": "off",
     "jsx-a11y/label-has-associated-control": "off",
-    "jsx-a11y/control-has-associated-label": "off",
-    "import/extensions": "off"
+    "jsx-a11y/control-has-associated-label": "off"
   },
   "ignorePatterns": [
     "dist/",
