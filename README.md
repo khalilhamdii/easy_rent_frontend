@@ -20,7 +20,7 @@ EasyRent is a car renting management web application. It's built using React & R
 
 ## Live Demo
 
-[Live demo](https://daily-meal.herokuapp.com/)
+[Live demo](https://easyrent-rms.herokuapp.com/)
 
 ## Preview
 
