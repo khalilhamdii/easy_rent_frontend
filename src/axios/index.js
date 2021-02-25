@@ -5,9 +5,9 @@ export const apiLogin = (user, action, redirect, setErrors) => {
     .post(
       'https://easyrent-backend.herokuapp.com/login',
       { user },
-      { withCredentials: true }
+      { withCredentials: true },
     )
-    .then((response) => {
+    .then(response => {
       if (response.data.logged_in) {
         action(response.data);
         redirect();
@@ -15,7 +15,7 @@ export const apiLogin = (user, action, redirect, setErrors) => {
         setErrors(response.data.errors);
       }
     })
-    .catch((error) => console.log('api errors:', error.response.data));
+    .catch(error => console.log('api errors:', error.response.data));
 };
 
 export const apiSignUp = (user, action, redirect, setErrors) => {
@@ -23,9 +23,9 @@ export const apiSignUp = (user, action, redirect, setErrors) => {
     .post(
       'https://easyrent-backend.herokuapp.com/users',
       { user },
-      { withCredentials: true }
+      { withCredentials: true },
     )
-    .then((response) => {
+    .then(response => {
       if (response.data.status === 'created') {
         action(response.data);
         redirect();
@@ -33,7 +33,7 @@ export const apiSignUp = (user, action, redirect, setErrors) => {
         setErrors(response.data.errors);
       }
     })
-    .catch((error) => console.log('api errors:', error.response.data));
+    .catch(error => console.log('api errors:', error.response.data));
 };
 
 export const apiLogOut = (user, action) => {
@@ -41,14 +41,14 @@ export const apiLogOut = (user, action) => {
     .post(
       'https://easyrent-backend.herokuapp.com/logout',
       { user },
-      { withCredentials: true }
+      { withCredentials: true },
     )
-    .then((response) => {
+    .then(response => {
       if (response.data.logged_out) {
         action();
       }
     })
-    .catch((error) => console.log('api errors:', error));
+    .catch(error => console.log('api errors:', error));
 };
 
 export const apiGetLoginStatus = (loginHandler, logoutHandler) => {
@@ -56,14 +56,14 @@ export const apiGetLoginStatus = (loginHandler, logoutHandler) => {
     .get('https://easyrent-backend.herokuapp.com/logged_in', {
       withCredentials: true,
     })
-    .then((response) => {
+    .then(response => {
       if (response.data.logged_in) {
         loginHandler(response.data);
       } else {
         logoutHandler();
       }
     })
-    .catch((error) => console.log('api errors:', error));
+    .catch(error => console.log('api errors:', error));
 };
 
 export const apiAddRent = (rent, userId, action) => {
@@ -73,14 +73,14 @@ export const apiAddRent = (rent, userId, action) => {
       rent,
       {
         withCredentials: true,
-      }
+      },
     )
-    .then((response) => {
+    .then(response => {
       if (response.data.status === 'created') {
         action(rent);
       }
     })
-    .catch((error) => console.log('api errors:', error.response.data));
+    .catch(error => console.log('api errors:', error.response.data));
 };
 
 export const apiRemoveRent = (id, action) => {
@@ -88,12 +88,12 @@ export const apiRemoveRent = (id, action) => {
     .delete(`https://easyrent-backend.herokuapp.com/rents/${id}`, {
       withCredentials: true,
     })
-    .then((response) => {
+    .then(response => {
       if (response.data.status === 'deleted') {
         action(id);
       }
     })
-    .catch((error) => console.log('api errors:', error));
+    .catch(error => console.log('api errors:', error));
 };
 
 export const apiChangeRentStatus = (id, rent, status, action) => {
@@ -102,23 +102,23 @@ export const apiChangeRentStatus = (id, rent, status, action) => {
     .patch(`https://easyrent-backend.herokuapp.com/rents/${id}`, modifiedRent, {
       withCredentials: true,
     })
-    .then((response) => {
+    .then(response => {
       if (response.data.status === 'updated') {
         action(id, status);
       }
     })
-    .catch((error) => console.log('api errors:', error));
+    .catch(error => console.log('api errors:', error));
 };
 
-export const apiGetRents = (action) => {
+export const apiGetRents = action => {
   axios
     .get('https://easyrent-backend.herokuapp.com/rents/', {
       withCredentials: true,
     })
-    .then((response) => {
+    .then(response => {
       action(response.data);
     })
-    .catch((error) => console.log('api errors:', error));
+    .catch(error => console.log('api errors:', error));
 };
 
 export const apiGetUserRents = (id, action) => {
@@ -126,23 +126,23 @@ export const apiGetUserRents = (id, action) => {
     .get(`https://easyrent-backend.herokuapp.com/users/${id}/rents/`, {
       withCredentials: true,
     })
-    .then((response) => {
+    .then(response => {
       action(response.data);
     })
-    .catch((error) => console.log('api errors:', error.response.data));
+    .catch(error => console.log('api errors:', error.response.data));
 };
 
-export const apiGetCars = (action) => {
+export const apiGetCars = action => {
   axios
     .get('https://easyrent-backend.herokuapp.com/api/v1/cars', {
       withCredentials: true,
     })
-    .then((response) => {
+    .then(response => {
       if (response.status === 200) {
         action(response.data);
       }
     })
-    .catch((error) => console.log('api errors:', error.response.data));
+    .catch(error => console.log('api errors:', error.response.data));
 };
 
 export const apiAddCar = (carData, action) => {
@@ -151,12 +151,12 @@ export const apiAddCar = (carData, action) => {
       headers: { 'content-type': 'multipart/form-data' },
       withCredentials: true,
     })
-    .then((response) => {
+    .then(response => {
       if (response.statusText === 'Created') {
         action(response.data);
       }
     })
-    .catch((error) => console.log('api errors:', error.response.data));
+    .catch(error => console.log('api errors:', error.response.data));
 };
 
 export const apiRemoveCar = (id, action) => {
@@ -164,12 +164,12 @@ export const apiRemoveCar = (id, action) => {
     .delete(`https://easyrent-backend.herokuapp.com/api/v1/cars/${id}`, {
       withCredentials: true,
     })
-    .then((response) => {
+    .then(response => {
       if (response.data.status === 'deleted') {
         action(id);
       }
     })
-    .catch((error) => console.log('api errors:', error));
+    .catch(error => console.log('api errors:', error));
 };
 
 export const apiEditCar = (id, carData, action) => {
@@ -179,12 +179,12 @@ export const apiEditCar = (id, carData, action) => {
       carData,
       {
         withCredentials: true,
-      }
+      },
     )
-    .then((response) => {
+    .then(response => {
       if (response.statusText === 'Accepted') {
         action(response.data);
       }
     })
-    .catch((error) => console.log('api errors:', error));
+    .catch(error => console.log('api errors:', error));
 };
