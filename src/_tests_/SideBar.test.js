@@ -26,7 +26,7 @@ describe('rendered SideBar', () => {
           <SideBar />
         </BrowserRouter>
       </Provider>,
-      container
+      container,
     );
   });
   test('has Text element', () => {

@@ -1,68 +1,95 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+# Final capstone : EasyRent Front-end
 
-## Available Scripts
+![Microverse](https://img.shields.io/badge/-Microverse-6F23FF?style=for-the-badge)
 
-In the project directory, you can run:
+## Description
 
-### `npm start`
+EasyRent is a car renting management web application. It's built using React & Redux in the Front-end and Ruby On Rails in the Back-end. As a user, you can create a new account and have the ability to browse through available cars and make a rent request for a particular car. When logged in as an administrator, you can create, edit and delete cars. You are also provided with a panel to view and manage all rent requests from users.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Library Directory 📙
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+| Contents                    |
+| --------------------------- |
+| [Live Demo](#live-demo)     |
+| [Preview](#preview)         |
+| [Built With](#built-with-🛠) |
+| [Setup](#setup-⏳)          |
+| [Testing](#testing-⚙️)      |
+| [Authors](#authors)         |
+| [License](#license)         |
 
-### `npm test`
+## Live Demo
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+[Live demo](https://daily-meal.herokuapp.com/)
 
-### `npm run build`
+## Preview
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![preview](./preview/preview.gif)
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Features
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Implemented a proper user authentication from the front-end to the server.
+- Created a user table in the database, so that a given user could only access their rent requests.
+- Created an admin panel to create / update / delete car models.
 
-### `npm run eject`
+## Admin Panel
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+To login as an administrator please use the following email and password :
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Email: admin@admin.com
+- Password: admin
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Built With 🛠
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+- React.js
+- Redux
+- Node.js
+- ES6
+- Bootstrap
+- HTML
+- CSS
+```
 
-## Learn More
+## Setup ⏳
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+> Follow these steps to setup this web application locally :
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. - [ ] Open your `Terminal`.
+2. - [ ] Navigate to the directory where you will like to install the repo by running `cd FOLDER-NAME`
+3. - [ ] Run `git clone git@github.com:khalilhamdii/easy_rent_frontend.git` in the terminal to download.
+4. - [ ] Run `cd easy_rent_frontend` to enter directory.
+5. - [ ] Run `npm install` to install node packages and dependencies.
+6. - [ ] Run `npm start` in your browser to start the application.
 
-### Code Splitting
+## Testing ⚙️
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+> I used [Jest](https://jestjs.io/) testing tool and react testing library to test functions by creating several test cases and snapshots. Please follow below steps to run Jest testing tool:
 
-### Analyzing the Bundle Size
+1. - [ ] Open `Terminal` again
+2. - [ ] Run `cd easy_rent_frontend` to enter directory
+3. - [ ] Run `npm test` to start testing
+4. - [ ] All tests will pass ✅
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+## Authors
 
-### Making a Progressive Web App
+### 👨‍💻 Khalil Hamdi
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+[![GitHub](https://img.shields.io/badge/-GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/khalilhamdii) <br>
+[![LINKEDIN](https://img.shields.io/badge/-LINKEDIN-0077B5?style=for-the-badge&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/khalilhamdi/) <br>
+[![EMAIL](https://img.shields.io/badge/-EMAIL-D14836?style=for-the-badge&logo=Mail.Ru&logoColor=white)](mailto:khaalil.hamdi@gmail.com) <br>
+[![TWITTER](https://img.shields.io/badge/-TWITTER-1DA1F2?style=for-the-badge&logo=Twitter&logoColor=white)](https://twitter.com/Khalilhamdiii)
 
-### Advanced Configuration
+### 🤝 Contributing
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+Contributions, issues and feature requests are welcome!
 
-### Deployment
+Feel free to check the [issues page](https://github.com/khalilhamdii/MyTodos).
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+### Show your support
 
-### `npm run build` fails to minify
+Give a ⭐️ if you like this project!
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### License
+
+![Cocoapods](https://img.shields.io/cocoapods/l/AFNetworking?color=red&style=for-the-badge)

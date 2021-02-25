@@ -115,20 +115,19 @@ const SideBar = props => {
             className="social-icons mb-1"
             style={{ paddingTop: '0px', paddingBottom: '0px' }}
           >
-            <a href="/">
-              <i className="icon ion-social-twitter" />
+            <a href="https://github.com/khalilhamdii">
+              <i className="fa fa-github" />
             </a>
-            <a href="/">
-              <i className="icon ion-social-facebook" />
+            <a href="https://www.linkedin.com/in/khalilhamdi/">
+              <i className="fa fa-linkedin" />
             </a>
-            <a href="/">
-              <i className="icon ion-social-snapchat" />
-            </a>
-            <a href="/">
-              <i className="icon ion-social-youtube" />
+            <a href="https://twitter.com/Khalilhamdiii">
+              <i className="fa fa-twitter" />
             </a>
           </div>
-          <span style={{ fontSize: '12px' }}>2021 Khalil Hamdi</span>
+          <span style={{ fontSize: '12px' }}>
+            ©2021 Khalil Hamdi - EasyRent
+          </span>
         </div>
       </nav>
     </>

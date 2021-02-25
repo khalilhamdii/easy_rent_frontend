@@ -26,7 +26,7 @@ describe('rendered Profil', () => {
           <Profil />
         </BrowserRouter>
       </Provider>,
-      container
+      container,
     );
   });
   test('has Text element', () => {
