@@ -30,7 +30,7 @@ const carsReducer = (state = initialState, action) => {
       };
     }
     case ADD_CARS: {
-      return { ...state, cars: [...state.cars, ...action.payload.cars] };
+      return { ...state, cars: action.payload.cars };
     }
     default:
       return state;

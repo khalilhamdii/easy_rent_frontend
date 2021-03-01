@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { loginHandler, logoutHandler, addCars } from '../actions/index';
+import { addCars } from '../actions/index';
 import { mapSessionToProps } from '../helpers/index';
 import Home from '../components/Home';
 import SideBar from '../components/SideBar';
@@ -12,12 +12,11 @@ import Cars from '../containers/Cars';
 import CarDetails from '../components/CarDetails';
 import Profil from '../components/Profil';
 import Panel from '../components/Panel';
-import { apiGetLoginStatus, apiGetCars } from '../axios';
+import { apiGetCars } from '../axios';
 
 const Routes = props => {
-  const { loginHandler, logoutHandler, addCars } = props;
+  const { addCars } = props;
   useEffect(() => {
-    apiGetLoginStatus(loginHandler, logoutHandler);
     apiGetCars(addCars);
   }, []);
   return (
@@ -52,13 +51,9 @@ Routes.propTypes = {
       role: PropTypes.string,
     }),
   }).isRequired,
-  loginHandler: PropTypes.func.isRequired,
-  logoutHandler: PropTypes.func.isRequired,
   addCars: PropTypes.func.isRequired,
 };
 
 export default connect(mapSessionToProps, {
-  loginHandler,
-  logoutHandler,
   addCars,
 })(Routes);

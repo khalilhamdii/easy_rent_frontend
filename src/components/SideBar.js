@@ -5,11 +5,10 @@ import PropTypes from 'prop-types';
 import { mapSessionToProps } from '../helpers/index';
 import { logoutHandler } from '../actions/index';
 import '../assets/css/sidebar.css';
-import { apiLogOut } from '../axios';
 import logo from '../assets/images/logo.png';
 
 const SideBar = props => {
-  const { session } = props;
+  const { session, logoutHandler } = props;
   const location = useLocation().pathname;
   const [navToggle, setNavToggle] = useState(false);
   const handleNavToggle = () => {
@@ -17,8 +16,7 @@ const SideBar = props => {
   };
 
   const handleLogOut = () => {
-    const { user } = session;
-    apiLogOut(user, props.logoutHandler);
+    logoutHandler();
   };
 
   return (

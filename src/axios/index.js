@@ -30,30 +30,6 @@ export const apiSignUp = (user, action, redirect, setErrors) => {
     .catch(error => console.log('api errors:', error.response.data));
 };
 
-export const apiLogOut = (user, action) => {
-  axios
-    .post('http://localhost:3001/logout', { user })
-    .then(response => {
-      if (response.data.logged_out) {
-        action();
-      }
-    })
-    .catch(error => console.log('api errors:', error));
-};
-
-export const apiGetLoginStatus = (loginHandler, logoutHandler) => {
-  axios
-    .get('http://localhost:3001/logged_in')
-    .then(response => {
-      if (response.data.logged_in) {
-        loginHandler(response.data);
-      } else {
-        logoutHandler();
-      }
-    })
-    .catch(error => console.log('api errors:', error));
-};
-
 export const apiAddRent = (rent, userId, action) => {
   axios
     .post(`http://localhost:3001/users/${userId}/rents/`, rent)
