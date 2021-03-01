@@ -10,11 +10,35 @@ const RentForm = props => {
     uniqModels,
     info,
   } = props;
-  const { register, errors, handleSubmit } = useForm();
+
+  const {
+    register, errors, getValues, handleSubmit,
+  } = useForm();
   const onSubmit = data => {
     handleAddRent(data);
     handleRentClick();
   };
+
+  const validatePickUp = () => {
+    const date = new Date(
+      `${getValues('pickUpDate')} ${getValues('pickUpTime')}`,
+    );
+    const today = new Date();
+    const differenceInTime = date.getTime() - today.getTime();
+    return differenceInTime > 0;
+  };
+
+  const validateReturn = () => {
+    const pickUpDate = new Date(
+      `${getValues('pickUpDate')} ${getValues('pickUpTime')}`,
+    );
+    const returnDate = new Date(
+      `${getValues('returnDate')} ${getValues('returnTime')}`,
+    );
+    const differenceInTime = returnDate.getTime() - pickUpDate.getTime();
+    return Math.ceil(differenceInTime / (1000 * 3600 * 24)) > 1;
+  };
+
   return (
     <div
       className="modal fade show"
@@ -43,6 +67,20 @@ const RentForm = props => {
           </div>
           <div className="modal-body">
             <form onSubmit={handleSubmit(onSubmit)}>
+              <ul className="text-danger">
+                {errors.pickUpDate && errors.pickUpDate.type === 'validate' && (
+                  <li>
+                    Please verify pick-up date! You can&apos;t pick a paste
+                    date.
+                  </li>
+                )}
+                {errors.returnDate && errors.returnDate.type === 'validate' && (
+                  <li>
+                    Please verify date inputs! Minimum rent duration allowed is
+                    1 day.
+                  </li>
+                )}
+              </ul>
               <div className="form-group">
                 <label className="text-muted" style={{ fontWeight: 'bold' }}>
                   NAME:
@@ -88,7 +126,7 @@ const RentForm = props => {
                     name="pickUpDate"
                     className="form-control w-50"
                     type="date"
-                    ref={register({ required: true })}
+                    ref={register({ required: true, validate: validatePickUp })}
                   />
                   <input
                     name="pickUpTime"
@@ -110,7 +148,7 @@ const RentForm = props => {
                     name="returnDate"
                     className="form-control w-50"
                     type="date"
-                    ref={register({ required: true })}
+                    ref={register({ required: true, validate: validateReturn })}
                   />
                   <input
                     name="returnTime"

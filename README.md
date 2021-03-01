@@ -6,6 +6,10 @@
 
 EasyRent is a car renting management web application. It's built using React & Redux in the Front-end and Ruby On Rails in the Back-end. As a user, you can create a new account and have the ability to browse through available cars and make a rent request for a particular car. When logged in as an administrator, you can create, edit and delete cars. You are also provided with a panel to view and manage all rent requests from users.
 
+## Back-end repository
+
+[Back-end link](https://easyrent-backend.herokuapp.com/)
+
 ## Library Directory 📙
 
 | Contents                    |
