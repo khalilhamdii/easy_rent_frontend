@@ -1,10 +1,9 @@
 /* eslint-disable no-console */
-// https://easyrent-backend.herokuapp##.com
 import axios from 'axios';
 
 export const apiLogin = (user, action, redirect, setErrors) => {
   axios
-    .post('http://localhost:3001/login', { user })
+    .post('https://easyrent-backend.herokuapp.com/login', { user })
     .then(response => {
       if (response.data.logged_in) {
         action(response.data);
@@ -18,7 +17,7 @@ export const apiLogin = (user, action, redirect, setErrors) => {
 
 export const apiSignUp = (user, action, redirect, setErrors) => {
   axios
-    .post('http://localhost:3001/users', { user })
+    .post('https://easyrent-backend.herokuapp.com/users', { user })
     .then(response => {
       if (response.data.status === 'created') {
         action(response.data);
@@ -32,7 +31,7 @@ export const apiSignUp = (user, action, redirect, setErrors) => {
 
 export const apiAddRent = (rent, userId, action) => {
   axios
-    .post(`http://localhost:3001/users/${userId}/rents/`, rent)
+    .post(`https://easyrent-backend.herokuapp.com/users/${userId}/rents/`, rent)
     .then(response => {
       if (response.data.status === 'created') {
         action(rent);
@@ -43,7 +42,7 @@ export const apiAddRent = (rent, userId, action) => {
 
 export const apiRemoveRent = (id, action) => {
   axios
-    .delete(`http://localhost:3001/rents/${id}`)
+    .delete(`https://easyrent-backend.herokuapp.com/rents/${id}`)
     .then(response => {
       if (response.data.status === 'deleted') {
         action(id);
@@ -55,7 +54,7 @@ export const apiRemoveRent = (id, action) => {
 export const apiChangeRentStatus = (id, rent, status, action) => {
   const modifiedRent = { ...rent, status };
   axios
-    .patch(`http://localhost:3001/rents/${id}`, modifiedRent)
+    .patch(`https://easyrent-backend.herokuapp.com/rents/${id}`, modifiedRent)
     .then(response => {
       if (response.data.status === 'updated') {
         action(id, status);
@@ -66,7 +65,7 @@ export const apiChangeRentStatus = (id, rent, status, action) => {
 
 export const apiGetRents = action => {
   axios
-    .get('http://localhost:3001/rents/')
+    .get('https://easyrent-backend.herokuapp.com/rents/')
     .then(response => {
       action(response.data);
     })
@@ -75,7 +74,7 @@ export const apiGetRents = action => {
 
 export const apiGetUserRents = (id, action) => {
   axios
-    .get(`http://localhost:3001/users/${id}/rents/`)
+    .get(`https://easyrent-backend.herokuapp.com/users/${id}/rents/`)
     .then(response => {
       action(response.data);
     })
@@ -84,7 +83,7 @@ export const apiGetUserRents = (id, action) => {
 
 export const apiGetCars = action => {
   axios
-    .get('http://localhost:3001/api/v1/cars')
+    .get('https://easyrent-backend.herokuapp.com/api/v1/cars')
     .then(response => {
       if (response.status === 200) {
         action(response.data);
@@ -95,7 +94,7 @@ export const apiGetCars = action => {
 
 export const apiAddCar = (carData, action) => {
   axios
-    .post('http://localhost:3001/api/v1/cars', carData, {
+    .post('https://easyrent-backend.herokuapp.com/api/v1/cars', carData, {
       headers: { 'content-type': 'multipart/form-data' },
     })
     .then(response => {
@@ -108,7 +107,7 @@ export const apiAddCar = (carData, action) => {
 
 export const apiRemoveCar = (id, action) => {
   axios
-    .delete(`http://localhost:3001/api/v1/cars/${id}`)
+    .delete(`https://easyrent-backend.herokuapp.com/api/v1/cars/${id}`)
     .then(response => {
       if (response.data.status === 'deleted') {
         action(id);
@@ -119,7 +118,7 @@ export const apiRemoveCar = (id, action) => {
 
 export const apiEditCar = (id, carData, action) => {
   axios
-    .patch(`http://localhost:3001/api/v1/cars/${id}`, carData)
+    .patch(`https://easyrent-backend.herokuapp.com/api/v1/cars/${id}`, carData)
     .then(response => {
       if (response.statusText === 'Accepted') {
         action(response.data);
