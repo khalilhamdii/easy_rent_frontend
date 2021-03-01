@@ -263,6 +263,4 @@ exports[`Snapshots renders Home correctly 1`] = `
 </div>
 `;
 
-exports[`Snapshots renders Profil correctly 1`] = `null`;
-
 exports[`Snapshots renders SideBar correctly 1`] = `null`;

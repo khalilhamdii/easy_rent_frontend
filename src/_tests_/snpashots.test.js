@@ -7,7 +7,6 @@ import store from './test_store/index';
 import App from '../components/App';
 import Home from '../components/Home';
 import Cars from '../containers/Cars';
-import Profil from '../components/Profil';
 import SideBar from '../components/SideBar';
 
 const { act } = TestRenderer;
@@ -50,18 +49,6 @@ describe('Snapshots', () => {
         <Provider store={store}>
           <BrowserRouter>
             <Cars />
-          </BrowserRouter>
-        </Provider>,
-      ).toJSON();
-      expect(tree).toMatchSnapshot();
-    });
-  });
-  it('renders Profil correctly', () => {
-    act(() => {
-      const tree = TestRenderer.create(
-        <Provider store={store}>
-          <BrowserRouter>
-            <Profil />
           </BrowserRouter>
         </Provider>,
       ).toJSON();
