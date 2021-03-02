@@ -202,7 +202,7 @@ const CarEditForm = props => {
                   ref={register({
                     required: true,
                     maxLength: 20,
-                    minLength: 4,
+                    minLength: 1,
                   })}
                   className="form-control"
                   placeholder="Please enter engine type..."
