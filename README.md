@@ -8,7 +8,7 @@ EasyRent is a car renting management web application. It's built using React & R
 
 ## Back-end repository
 
-[Back-end link](https://easyrent-backend.herokuapp.com/)
+[Back-end link](https://github.com/khalilhamdii/easy-rent-api)
 
 ## Library Directory 📙
 
